@@ -24,7 +24,7 @@
 			 */
 			files: { 
 				JQUERY: 'jquery.1.9.1.min.js',
-				HIGHCHARTS: 'highstock.js',
+				HIGHCHARTS: 'highcharts.js',
 				/* HIGHCHARTS: 'highcharts.js',*/
 				HIGHCHARTS_MORE: 'highcharts-more.js',
 				HIGHCHARTS_DATA: 'data.js',
