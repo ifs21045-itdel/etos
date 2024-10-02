@@ -5,7 +5,7 @@
         <tr><td colspan="2" align="center">
                 <?php
                // var_dump($dt_detail);
-                $image = $_SERVER["HTTP_REFERER"] . 'files/producttest/' . $dt_detail->hot_cold_test_list_id . "/" . $dt_detail->image_file;
+                $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $dt_detail->hot_cold_test_list_id . "/" . $dt_detail->image_file;
                 //echo "asdasdasdasd". $image;
                 echo "<img src='" . $image . "' width='100%'>";
                 ?>

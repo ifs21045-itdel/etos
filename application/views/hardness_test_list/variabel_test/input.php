@@ -1,5 +1,5 @@
 <div style="width: 99%;padding: 2px;">
-    <form id="print_mark_test_list_print_mark_test_list_detail_input" method="post" novalidate enctype="multipart/form-data">
+    <form id="hardness_test_list_hardness_test_list_detail_input" method="post" novalidate enctype="multipart/form-data">
         <table width="100%" border="0" class="table_form">
             <tr>
                 <td width="35%"><strong>Evaluation</strong></td>

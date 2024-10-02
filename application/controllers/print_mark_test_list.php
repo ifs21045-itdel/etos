@@ -60,7 +60,7 @@ class print_mark_test_list extends CI_Controller {
             $id_dir = 1 + $maxid[0]->max_id;
         }
         if (isset($_FILES[$nametemp_product]['name'])) {
-            $directory = 'files/producttest/' . $id_dir;
+            $directory = 'files/printmarktest/' . $id_dir;
 
             if (!file_exists($directory)) {
                 $oldumask = umask(0);
@@ -166,7 +166,7 @@ class print_mark_test_list extends CI_Controller {
         $nametemp2 = 'image2_file';
         $nametemp3 = 'image3_file';
         if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name']) || isset($_FILES[$nametemp3]['name'])) {
-            $directory = 'files/producttest/' . $print_mark_test_list_id;
+            $directory = 'files/printmarktest/' . $print_mark_test_list_id;
 
             if (!file_exists($directory)) {
                 $oldumask = umask(0);
@@ -304,7 +304,7 @@ class print_mark_test_list extends CI_Controller {
         $nametemp2 = 'image2_file';
         $nametemp3 = 'image3_file';
         if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name']) || isset($_FILES[$nametemp3]['name'])) {
-            $directory = 'files/producttest/' . $print_mark_test_list_id;
+            $directory = 'files/printmarktest/' . $print_mark_test_list_id;
 
             if (!file_exists($directory)) {
                 $oldumask = umask(0);

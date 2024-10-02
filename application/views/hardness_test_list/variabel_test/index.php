@@ -5,27 +5,27 @@
             word-break: break-all; /* Membuat teks bisa pecah jika terlalu panjang */
         }
 </style>
-<div id="hot_cold_test_list_hot_cold_test_list_detail_toolbar" style="padding-bottom: 2px;">
+<div id="hardness_test_list_hardness_test_list_detail_toolbar" style="padding-bottom: 2px;">
     <?php
     if (in_array("Add", $action)) {
         ?>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="hot_cold_test_list_hot_cold_test_list_detail_add()"> Add</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="hardness_test_list_hardness_test_list_detail_add()"> Add</a>
         <?php
     }
     if (in_array("Edit", $action)) {
         ?>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="hot_cold_test_list_hot_cold_test_list_detail_edit()"> Edit</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="hardness_test_list_hardness_test_list_detail_edit()"> Edit</a>
         <?php
     }
     if (in_array("Delete", $action)) {
         ?>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hot_cold_test_list_hot_cold_test_list_detail_delete()">Delete</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="hardness_test_list_hardness_test_list_detail_delete()">Delete</a>
         <?php
     }
     ?>
 </div>
-<table  id="hot_cold_test_list_hot_cold_test_list_detail" data-options="
-       url:'<?php echo site_url('hot_cold_test_list/hot_cold_test_list_detail_get') ?>',
+<table  id="hardness_test_list_hardness_test_list_detail" data-options="
+       url:'<?php echo site_url('hardness_test_list/hardness_test_list_detail_get') ?>',
        method:'post',
        border:true,
        title:'Variabel Test',
@@ -37,7 +37,7 @@
        pagination:true,
        striped:true,
        autoRowHeight:true,
-       toolbar:'#hot_cold_test_list_hot_cold_test_list_detail_toolbar'">
+       toolbar:'#hardness_test_list_hardness_test_list_detail_toolbar'">
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
@@ -47,16 +47,16 @@
             <th field="notes" halign="center" width=250 sortable="true">Notes</th>
             <th field="var_type" halign="center" sortable="true">Data Type</th>
             <th field="mandatory" halign="center" sortable="true">Mandatory</th>
-            <th  field="image_file"  valign="center" align=center formatter="showimage_hotcold_test">Image</th>
-            <th  field="image2_file"  valign="center" align=center formatter="showimage_hotcold_test2">Image 2</th>
-            <th  field="image3_file"  valign="center" align=center formatter="showimage_hotcold_test3">Image 3</th>
+            <th  field="image_file"  valign="center" align=center formatter="showimage_hardness_test">Image</th>
+            <th  field="image2_file"  valign="center" align=center formatter="showimage_hardness_test2">Image 2</th>
+            <th  field="image3_file"  valign="center" align=center formatter="showimage_hardness_test3">Image 3</th>
             <th field ="detail" formatter="formatDetail2_dt" styler="cellStyler2_dt" valign="center">Actions</th>
         </tr>
     </thead>
 </table>
 <script type="text/javascript">
     $(function () {
-        $('#hot_cold_test_list_hot_cold_test_list_detail').datagrid({
+        $('#hardness_test_list_hardness_test_list_detail').datagrid({
 
             rowStyler: function (index, row) {
                // alert('mandatory:'+row.mandatory+' vartype:'+row.var_type+' imagename:'+row.image_file+' notes:'+row.notes);
@@ -68,47 +68,47 @@
                 }
             },
             onDblClickRow: function (rowIndex, row) {
-              // hot_cold_test_list_hot_cold_test_list_detail_edit();
+              // hardness_test_list_hardness_test_list_detail_edit();
             }
         });
     });
 
-    function showimage_hotcold_test(value, row) {
+    function showimage_hardness_test(value, row) {
         var idrow = row.id;
         var temp = '';
-        //alert(row.hot_cold_test_list_id);
+        //alert(row.hardness_test_list_id);
         if (row.image_file == null)
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image_file + "' width=90 height=90 onclick='hardness_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }
-    function showimage_hotcold_test2(value, row) {
+    function showimage_hardness_test2(value, row) {
         var idrow = row.id;
         var temp = '';
-        //alert(row.hot_cold_test_list_id);
+        //alert(row.hardness_test_list_id);
         if (row.image2_file == null)
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image2_file + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image2_file + "' width=90 height=90 onclick='hardness_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }
-    function showimage_hotcold_test3(value, row) {
+    function showimage_hardness_test3(value, row) {
         var idrow = row.id;
         var temp = '';
-        //alert(row.hot_cold_test_list_id);
+        //alert(row.hardness_test_list_id);
         if (row.image3_file == null)
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image3_file + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image3_file + "' width=90 height=90 onclick='hardness_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/hardnesstest/" + row.hardness_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }
@@ -117,9 +117,9 @@
         //var temp = '';
         if (row.submited == 'f' || row.submited==null) {
             if (row.var_type == 'Photo')
-                var temp = "<input type=button value='Upload Photo' id='dtvt" + row.id + "' onclick='hot_cold_test_list_variabel_test_add(\"photo\")'> ";
+                var temp = "<input type=button value='Upload Photo' id='dtvt" + row.id + "' onclick='hardness_test_list_variabel_test_add(\"photo\")'> ";
             else
-                var temp = "<input type=button value='Edit Notes' id='dtvt" + row.id + "' onclick='hot_cold_test_list_variabel_test_add(\"notes\")'> ";
+                var temp = "<input type=button value='Edit Notes' id='dtvt" + row.id + "' onclick='hardness_test_list_variabel_test_add(\"notes\")'> ";
         } else
             var temp = 'submited';
         return temp;

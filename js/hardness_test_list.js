@@ -5,46 +5,46 @@
 
 /* global base_url */
 
-function print_mark_test_list_search() {
-    $('#print_mark_test_list').datagrid('reload', $('#print_mark_test_list_form_search').serializeObject());
+function hardness_test_list_search() {
+    $('#hardness_test_list').datagrid('reload', $('#hardness_test_list_form_search').serializeObject());
 }
 
-function print_mark_test_list_add() {
-    if ($('#print_mark_test_list_detail_dialog')) {
-        $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+function hardness_test_list_add() {
+    if ($('#hardness_test_list_detail_dialog')) {
+        $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
     }
 
-    $('#print_mark_test_list_detail_dialog').dialog({
+    $('#hardness_test_list_detail_dialog').dialog({
         title: 'Packing Configuration',
         width: 700,
         height: 'auto',
-        href: base_url + 'print_mark_test_list/input',
+        href: base_url + 'hardness_test_list/input',
         modal: true,
         resizable: true,
         buttons: [{
                 text: 'Save',
                 iconCls: 'icon-save',
                 handler: function () {
-                    print_mark_test_list_save('no-image.jpg');
+                    hardness_test_list_save('no-image.jpg');
                 }
             }, {
                 text: 'Close',
                 iconCls: 'icon-remove',
                 handler: function () {
-                    $('#print_mark_test_list_detail_dialog').dialog('close');
+                    $('#hardness_test_list_detail_dialog').dialog('close');
                 }
             }],
         onLoad: function () {
             $(this).dialog('center');
-//            $('#print_mark_test_list_input_form').form('clear');
+//            $('#hardness_test_list_input_form').form('clear');
         }
     });
-    url = base_url + 'print_mark_test_list/save/0';
+    url = base_url + 'hardness_test_list/save/0';
 }
 
-function print_mark_test_list_save(file_name) {
-    if ($('#print_mark_test_list_input_form').form('validate')) {
-        $('#print_mark_test_list_input_form').form('submit', {
+function hardness_test_list_save(file_name) {
+    if ($('#hardness_test_list_input_form').form('validate')) {
+        $('#hardness_test_list_input_form').form('submit', {
             url: url,
             onSubmit: function (param) {
                 param.last_file_name = file_name
@@ -53,8 +53,8 @@ function print_mark_test_list_save(file_name) {
                 console.log(content);
                 var result = eval('(' + content + ')');
                 if (result.success) {
-                    $('#print_mark_test_list').datagrid('reload');
-                    $('#print_mark_test_list_detail_dialog').dialog('close');
+                    $('#hardness_test_list').datagrid('reload');
+                    $('#hardness_test_list_detail_dialog').dialog('close');
                     if (result.msg !== '') {
                         $.messager.show({
                             title: 'File Upload Message',
@@ -73,17 +73,17 @@ function print_mark_test_list_save(file_name) {
 
 }
 
-function print_mark_test_list_edit() {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function hardness_test_list_edit() {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
-        if ($('#print_mark_test_list_detail_dialog')) {
-            $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+        if ($('#hardness_test_list_detail_dialog')) {
+            $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
         }
-        $('#print_mark_test_list_detail_dialog').dialog({
+        $('#hardness_test_list_detail_dialog').dialog({
             title: 'Edit Product',
             width: 600,
             height: 'auto',
-            href: base_url + 'print_mark_test_list/input',
+            href: base_url + 'hardness_test_list/input',
             modal: true,
             resizable: true,
             top: 60,
@@ -91,41 +91,41 @@ function print_mark_test_list_edit() {
                     text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
-                        print_mark_test_list_save(row.image);
+                        hardness_test_list_save(row.image);
                     }
                 }, {
                     text: 'Close',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        $('#print_mark_test_list_detail_dialog').dialog('close');
+                        $('#hardness_test_list_detail_dialog').dialog('close');
                     }
                 }],
             onLoad: function () {
-                $('#print_mark_test_list_detail_tr_component').remove();
-                $('#print_mark_test_list_input_form').form('load', row);
+                $('#hardness_test_list_detail_tr_component').remove();
+                $('#hardness_test_list_input_form').form('load', row);
                 var material_temp = row.material_id.replace(/[({}]/g, "");
                 var material = material_temp.split(',');
                 $('#material_id').combobox('setValues', material);
                 $(this).dialog('center');
             }
         });
-        url = base_url + 'print_mark_test_list/save/' + row.id;
+        url = base_url + 'hardness_test_list/save/' + row.id;
     } else {
         $.messager.alert('No Product Selected', 'Please Select Product', 'warning');
     }
 }
 
-function print_mark_test_list_update_price() {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function hardness_test_list_update_price() {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
-        if ($('#print_mark_test_list_detail_dialog')) {
-            $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+        if ($('#hardness_test_list_detail_dialog')) {
+            $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
         }
-        $('#print_mark_test_list_detail_dialog').dialog({
+        $('#hardness_test_list_detail_dialog').dialog({
             title: 'Update MSRP',
             width: 500,
             height: 'auto',
-            href: base_url + 'print_mark_test_list/update_price/' + row.id,
+            href: base_url + 'hardness_test_list/update_price/' + row.id,
             modal: true,
             resizable: true,
             top: 60,
@@ -133,16 +133,16 @@ function print_mark_test_list_update_price() {
                     text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
-                        $('#print_mark_test_list_update_price_form').form('submit', {
-                            url: base_url + 'print_mark_test_list/do_update_price/' + row.id,
+                        $('#hardness_test_list_update_price_form').form('submit', {
+                            url: base_url + 'hardness_test_list/do_update_price/' + row.id,
                             onSubmit: function () {
                                 return $(this).form('validate');
                             },
                             success: function (content) {
                                 var result = eval('(' + content + ')');
                                 if (result.success) {
-                                    $('#print_mark_test_list').datagrid('reload');
-                                    $('#print_mark_test_list_detail_dialog').dialog('close');
+                                    $('#hardness_test_list').datagrid('reload');
+                                    $('#hardness_test_list_detail_dialog').dialog('close');
                                 } else {
                                     $.messager.alert('Error', result.msg, 'error');
                                 }
@@ -153,12 +153,12 @@ function print_mark_test_list_update_price() {
                     text: 'Close',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        $('#print_mark_test_list_detail_dialog').dialog('close');
+                        $('#hardness_test_list_detail_dialog').dialog('close');
                     }
                 }],
             onLoad: function () {
-                $('#print_mark_test_list_update_price_form').form('load', row);
-                $('#print_mark_test_list_detail_dialog').dialog('center');
+                $('#hardness_test_list_update_price_form').form('load', row);
+                $('#hardness_test_list_detail_dialog').dialog('center');
             }
         });
     } else {
@@ -166,16 +166,16 @@ function print_mark_test_list_update_price() {
     }
 }
 
-function print_mark_test_list_delete() {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function hardness_test_list_delete() {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
         $.messager.confirm('Confirm', 'Are you sure you want to remove this data?', function (r) {
             if (r) {
-                $.post(base_url + 'print_mark_test_list/delete', {
+                $.post(base_url + 'hardness_test_list/delete', {
                     id: row.id
                 }, function (result) {
                     if (result.success) {
-                        $('#print_mark_test_list').datagrid('reload');
+                        $('#hardness_test_list').datagrid('reload');
                     } else {
                         $.messager.alert('Error', result.msg, 'error');
                     }
@@ -187,24 +187,24 @@ function print_mark_test_list_delete() {
     }
 }
 
-function print_mark_test_list_update_status(status) {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function hardness_test_list_update_status(status) {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
         if (row.iscomplete === 't') {
             var comment = '';
             if (status === 1) {
-                comment = 'Are you sure you want to release this print_mark_test_list_detail?';
+                comment = 'Are you sure you want to release this hardness_test_list_detail?';
             } else if (status === 0) {
-                comment = 'Are you sure you want to disable this print_mark_test_list_detail?';
+                comment = 'Are you sure you want to disable this hardness_test_list_detail?';
             }
             $.messager.confirm('Confirm', comment, function (r) {
                 if (r) {
-                    $.post(base_url + 'print_mark_test_list/update_status', {
+                    $.post(base_url + 'hardness_test_list/update_status', {
                         id: row.id,
                         status: status
                     }, function (result) {
                         if (result.success) {
-                            $('#print_mark_test_list').datagrid('reload');
+                            $('#hardness_test_list').datagrid('reload');
                         } else {
                             $.messager.alert('Error', result.msg, 'error');
                         }
@@ -219,20 +219,20 @@ function print_mark_test_list_update_status(status) {
     }
 }
 
-function print_mark_test_list_copy() {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
-    if ($('#print_mark_test_list_detail_dialog')) {
-        $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+function hardness_test_list_copy() {
+    var row = $('#hardness_test_list').datagrid('getSelected');
+    if ($('#hardness_test_list_detail_dialog')) {
+        $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
     }
     if (row !== null) {
-        $('#print_mark_test_list_detail_dialog').dialog({
+        $('#hardness_test_list_detail_dialog').dialog({
             title: 'Copy Product',
             width: 400,
             height: 'auto',
             top: 100,
             closed: false,
             cache: false,
-            href: base_url + 'print_mark_test_list/copy',
+            href: base_url + 'hardness_test_list/copy',
             modal: true,
             resizable: true,
             buttons: [
@@ -240,8 +240,8 @@ function print_mark_test_list_copy() {
                     text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
-                        $('#print_mark_test_list_copy_form').form('submit', {
-                            url: base_url + 'print_mark_test_list/do_copy/' + row.id,
+                        $('#hardness_test_list_copy_form').form('submit', {
+                            url: base_url + 'hardness_test_list/do_copy/' + row.id,
                             onSubmit: function () {
                                 return $(this).form('validate');
                             },
@@ -249,8 +249,8 @@ function print_mark_test_list_copy() {
                                 console.log(content);
                                 var result = eval('(' + content + ')');
                                 if (result.success) {
-                                    $('#print_mark_test_list_detail_dialog').dialog('close');
-                                    $('#print_mark_test_list').datagrid('reload');
+                                    $('#hardness_test_list_detail_dialog').dialog('close');
+                                    $('#hardness_test_list').datagrid('reload');
                                 } else {
                                     $.messager.alert('Error', result.msg, 'error');
                                 }
@@ -262,12 +262,12 @@ function print_mark_test_list_copy() {
                     text: 'Close',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        $('#print_mark_test_list_detail_dialog').dialog('close');
+                        $('#hardness_test_list_detail_dialog').dialog('close');
                     }
                 }
             ],
             onLoad: function () {
-                $('#print_mark_test_list_copy_form').form('load', row);
+                $('#hardness_test_list_copy_form').form('load', row);
                 $(this).dialog('center');
             }
         });
@@ -280,17 +280,17 @@ function print_mark_test_list_copy() {
 
 /* ------------------------------------------ Products Box ----------------------------------- */
 
-function print_mark_test_list_print_mark_test_list_detail_add() {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function hardness_test_list_hardness_test_list_detail_add() {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
-        if ($('#print_mark_test_list_detail_dialog')) {
-            $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+        if ($('#hardness_test_list_detail_dialog')) {
+            $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
         }
-        $('#print_mark_test_list_detail_dialog').dialog({
+        $('#hardness_test_list_detail_dialog').dialog({
             title: 'Packing Configuration',
             width: 500,
             height: 'auto',
-            href: base_url + 'print_mark_test_list/print_mark_test_list_detail_input',
+            href: base_url + 'hardness_test_list/hardness_test_list_detail_input',
             modal: true,
             resizable: true,
             top: 60,
@@ -298,29 +298,29 @@ function print_mark_test_list_print_mark_test_list_detail_add() {
                     text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
-                        print_mark_test_list_print_mark_test_list_detail_save();
+                        hardness_test_list_hardness_test_list_detail_save();
                     }
                 }, {
                     text: 'Close',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        $('#print_mark_test_list_detail_dialog').dialog('close');
+                        $('#hardness_test_list_detail_dialog').dialog('close');
                     }
                 }],
             onLoad: function () {
-                $('#print_mark_test_list_print_mark_test_list_detail_input').form('clear');
-                $('#print_mark_test_list_detail_dialog').dialog('center');
+                $('#hardness_test_list_hardness_test_list_detail_input').form('clear');
+                $('#hardness_test_list_detail_dialog').dialog('center');
             }
         });
-        url = base_url + 'print_mark_test_list/print_mark_test_list_detail_save/' + row.id + '/0';
+        url = base_url + 'hardness_test_list/hardness_test_list_detail_save/' + row.id + '/0';
     } else {
         $.messager.alert('No Product Selected', 'Please Select Product', 'warning');
     }
 
 }
 
-function print_mark_test_list_print_mark_test_list_detail_save() {
-    $('#print_mark_test_list_print_mark_test_list_detail_input').form('submit', {
+function hardness_test_list_hardness_test_list_detail_save() {
+    $('#hardness_test_list_hardness_test_list_detail_input').form('submit', {
         url: url,
         onSubmit: function () {
             return $(this).form('validate');
@@ -329,8 +329,8 @@ function print_mark_test_list_print_mark_test_list_detail_save() {
             console.log(content);
             var result = eval('(' + content + ')');
             if (result.success) {
-                $('#print_mark_test_list_detail_dialog').dialog('close');
-                $('#print_mark_test_list_print_mark_test_list_detail').datagrid('reload');
+                $('#hardness_test_list_detail_dialog').dialog('close');
+                $('#hardness_test_list_hardness_test_list_detail').datagrid('reload');
             } else {
                 $.messager.alert('Error', result.msg, 'error');
             }
@@ -338,17 +338,17 @@ function print_mark_test_list_print_mark_test_list_detail_save() {
     });
 }
 
-function print_mark_test_list_print_mark_test_list_detail_edit() {
-    var row = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getSelected');
+function hardness_test_list_hardness_test_list_detail_edit() {
+    var row = $('#hardness_test_list_hardness_test_list_detail').datagrid('getSelected');
     if (row !== null) {
-        if ($('#print_mark_test_list_detail_dialog')) {
-            $('#bodydata').append("<div id='print_mark_test_list_detail_dialog'></div>");
+        if ($('#hardness_test_list_detail_dialog')) {
+            $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
         }
-        $('#print_mark_test_list_detail_dialog').dialog({
+        $('#hardness_test_list_detail_dialog').dialog({
             title: 'Edit Variabel Test',
             width: 500,
             height: 'auto',
-            href: base_url + 'print_mark_test_list/print_mark_test_list_detail_input',
+            href: base_url + 'hardness_test_list/hardness_test_list_detail_input',
             modal: true,
             resizable: true,
             top: 60,
@@ -356,35 +356,35 @@ function print_mark_test_list_print_mark_test_list_detail_edit() {
                     text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
-                        print_mark_test_list_print_mark_test_list_detail_save();
+                        hardness_test_list_hardness_test_list_detail_save();
                     }
                 }, {
                     text: 'Close',
                     iconCls: 'icon-remove',
                     handler: function () {
-                        $('#print_mark_test_list_detail_dialog').dialog('close');
+                        $('#hardness_test_list_detail_dialog').dialog('close');
                     }
                 }],
             onLoad: function () {
-                $('#print_mark_test_list_print_mark_test_list_detail_input').form('load', row);
+                $('#hardness_test_list_hardness_test_list_detail_input').form('load', row);
             }
         });
-        url = base_url + 'print_mark_test_list/print_mark_test_list_detail_save/' + row.print_mark_test_list_id + '/' + row.id;
+        url = base_url + 'hardness_test_list/hardness_test_list_detail_save/' + row.hardness_test_list_id + '/' + row.id;
     } else {
         $.messager.alert('No Variabel Test Selected', 'Please Select Variabel Test', 'warning');
     }
 }
 
-function print_mark_test_list_print_mark_test_list_detail_delete() {
-    var row = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getSelected');
+function hardness_test_list_hardness_test_list_detail_delete() {
+    var row = $('#hardness_test_list_hardness_test_list_detail').datagrid('getSelected');
     if (row !== null) {
         $.messager.confirm('Confirm', 'Are you sure you want to remove this data?', function (r) {
             if (r) {
-                $.post(base_url + 'print_mark_test_list/print_mark_test_list_detail_delete', {
+                $.post(base_url + 'hardness_test_list/hardness_test_list_detail_delete', {
                     id: row.id
                 }, function (result) {
                     if (result.success) {
-                        $('#print_mark_test_list_print_mark_test_list_detail').datagrid('reload');
+                        $('#hardness_test_list_hardness_test_list_detail').datagrid('reload');
                     } else {
                         $.messager.alert('Error', result.msg, 'error');
                     }
@@ -395,29 +395,29 @@ function print_mark_test_list_print_mark_test_list_detail_delete() {
         $.messager.alert('No Variabel Test Selected', 'Please Select Variabel Test', 'warning');
     }
 }
-function print_mark_test_list_detail_download() {
-            open_target('POST', base_url + 'print_mark_test_list/download', '', '_blank');
+function hardness_test_list_detail_download() {
+            open_target('POST', base_url + 'hardness_test_list/download', '', '_blank');
 }
 //======================================================================
-function print_mark_test_list_variabel_test_add(type_form) {
-    var row = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getSelected');
+function hardness_test_list_variabel_test_add(type_form) {
+    var row = $('#hardness_test_list_hardness_test_list_detail').datagrid('getSelected');
     //alert (row.isnpection_id);
     if (row !== null) {
-        print_mark_test_list_variabel_test_form('edit', 'ADD IMAGE', row, row.id,type_form)
-        url = base_url + 'print_mark_test_list/variabel_test_save/'  +row.print_mark_test_list_id+'/'+ row.id;
+        hardness_test_list_variabel_test_form('edit', 'ADD IMAGE', row, row.id,type_form)
+        url = base_url + 'hardness_test_list/variabel_test_save/'  +row.hardness_test_list_id+'/'+ row.id;
     } else {
         $.messager.alert('No Product Selected', 'Please Select Product', 'warning');
     }
 }
-function print_mark_test_list_variabel_test_form(type, title, row, id,type_form) {
-    if ($('#print_mark_test_list_variabel_test_dialog_photo')) {
-        $('#bodydata').append("<div id='print_mark_test_list_variabel_test_dialog_photo'></div>");
+function hardness_test_list_variabel_test_form(type, title, row, id,type_form) {
+    if ($('#hardness_test_list_variabel_test_dialog_photo')) {
+        $('#bodydata').append("<div id='hardness_test_list_variabel_test_dialog_photo'></div>");
     }
-    $('#print_mark_test_list_variabel_test_dialog_photo').dialog({
+    $('#hardness_test_list_variabel_test_dialog_photo').dialog({
         title: title,
         width: 500,
         height: 'auto',
-        href: base_url + 'print_mark_test_list/variabel_test_input/' + id+ '/' + type_form,
+        href: base_url + 'hardness_test_list/variabel_test_input/' + id+ '/' + type_form,
         modal: true,
         resizable: true,
         overflow: 'auto',
@@ -426,23 +426,23 @@ function print_mark_test_list_variabel_test_form(type, title, row, id,type_form)
                 text: 'Save',
                 iconCls: 'icon-save',
                 handler: function () {
-                    print_mark_test_list_variabel_test_save();
+                    hardness_test_list_variabel_test_save();
                 }
             }, {
                 text: 'Close',
                 iconCls: 'icon-remove',
                 handler: function () {
-                    $('#print_mark_test_list_variabel_test_dialog_photo').dialog('close');
+                    $('#hardness_test_list_variabel_test_dialog_photo').dialog('close');
                 }
             }],
         onLoad: function () {
             $(this).dialog('center');
-            $('#print_mark_test_list_print_mark_test_list_detail_input_image').form('load', row);
+            $('#hardness_test_list_hardness_test_list_detail_input_image').form('load', row);
         }
     });
 }
-function print_mark_test_list_variabel_test_save() {
-    $('#print_mark_test_list_print_mark_test_list_detail_input_image').form('submit', {
+function hardness_test_list_variabel_test_save() {
+    $('#hardness_test_list_hardness_test_list_detail_input_image').form('submit', {
         url: url,
         onSubmit: function () {
             return $(this).form('validate');
@@ -451,8 +451,8 @@ function print_mark_test_list_variabel_test_save() {
             console.log(content);
             var result = eval('(' + content + ')');
             if (result.success) {
-                $('#print_mark_test_list_variabel_test_dialog_photo').dialog('close');
-                $('#print_mark_test_list_print_mark_test_list_detail').datagrid('reload');
+                $('#hardness_test_list_variabel_test_dialog_photo').dialog('close');
+                $('#hardness_test_list_hardness_test_list_detail').datagrid('reload');
             } else {
                 $.messager.alert('Error', result.msg, 'error');
             }
@@ -460,20 +460,20 @@ function print_mark_test_list_variabel_test_save() {
     });
 }
 
-function print_mark_test_list_submit(result_status) {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
-    var row_print_mark_test_list_detail = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getRows');
+function hardness_test_list_submit(result_status) {
+    var row = $('#hardness_test_list').datagrid('getSelected');
+    var row_hardness_test_list_detail = $('#hardness_test_list_hardness_test_list_detail').datagrid('getRows');
     //alert(arr.length); 
-    if ((row !== null) && (row_print_mark_test_list_detail.length>0)){
-        $.messager.confirm('Submit Submited', 'After submited you can not change the droptest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
+    if ((row !== null) && (row_hardness_test_list_detail.length>0)){
+        $.messager.confirm('Submit Submited', 'After submited you can not change the hardnesstest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
             if (r) {
-                $.post(base_url + 'print_mark_test_list/submit', {id: row.id,result_s:result_status}, function (result) {
+                $.post(base_url + 'hardness_test_list/submit', {id: row.id,result_s:result_status}, function (result) {
                     if (result.success) {
-                    $('#print_mark_test_list_submit_id').linkbutton('disable');
-                    $('#print_mark_test_list_edit_id').linkbutton('disable');
-                    $('#print_mark_test_list_delete_id').linkbutton('disable');
-                        $('#print_mark_test_list').datagrid('reload');
-                        $('#print_mark_test_list_print_mark_test_list_detail').datagrid('reload');
+                    $('#hardness_test_list_submit_id').linkbutton('disable');
+                    $('#hardness_test_list_edit_id').linkbutton('disable');
+                    $('#hardness_test_list_delete_id').linkbutton('disable');
+                        $('#hardness_test_list').datagrid('reload');
+                        $('#hardness_test_list_hardness_test_list_detail').datagrid('reload');
                     } else {
                         $.messager.alert('Error', result.msg, 'error');
                     }
@@ -481,30 +481,30 @@ function print_mark_test_list_submit(result_status) {
             }
         });
     } else {
-        $.messager.alert('Submitted Drop Test  Warning', 'No Drop Test or no item to be submitted', 'warning');
+        $.messager.alert('Submitted hardness Test  Warning', 'No hardness Test or no item to be submitted', 'warning');
     }
 }
-function print_print_mark_test_list(type,view_type) {
-    var row = $('#print_mark_test_list').datagrid('getSelected');
+function print_hardness_test_list(type,view_type) {
+    var row = $('#hardness_test_list').datagrid('getSelected');
     if (row !== null) {
         if (type === 'single')
-            open_target('POST', base_url + 'print_mark_test_list/prints', {id: row.id,jenis_laporan:view_type}, '_blank');
+            open_target('POST', base_url + 'hardness_test_list/prints', {id: row.id,jenis_laporan:view_type}, '_blank');
         else
-            open_target('POST', base_url + 'print_mark_test_list/prints', {id: row.id,jenis_laporan:view_type}, '_blank');
+            open_target('POST', base_url + 'hardness_test_list/prints', {id: row.id,jenis_laporan:view_type}, '_blank');
     } else {
         $.messager.alert('No Inspection List Selected', 'Please Select Inspection List', 'warning');
     }
 }
-function print_mark_test_list_variabel_test_view_detail(id) {
-    var row = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getSelected');
-    if ($('#print_mark_test_list_image_detail_dialog')) {
-        $('#bodydata').append("<div id='print_mark_test_list_image_detail_dialog'></div>");
+function hardness_test_list_variabel_test_view_detail(id) {
+    var row = $('#hardness_test_list_hardness_test_list_detail').datagrid('getSelected');
+    if ($('#hardness_test_list_image_detail_dialog')) {
+        $('#bodydata').append("<div id='hardness_test_list_image_detail_dialog'></div>");
     }
-    $('#print_mark_test_list_image_detail_dialog').dialog({
+    $('#hardness_test_list_image_detail_dialog').dialog({
         title: 'Image View',
         width: 300,
         height: 'auto',
-        href: base_url + 'print_mark_test_list/product_image_detail/' + row.id,
+        href: base_url + 'hardness_test_list/product_image_detail/' + row.id,
         modal: true,
         resizable: true,
         overflow: 'auto',
@@ -513,12 +513,12 @@ function print_mark_test_list_variabel_test_view_detail(id) {
                 text: 'Close',
                 iconCls: 'icon-remove',
                 handler: function () {
-                    $('#print_mark_test_list_image_detail_dialog').dialog('close');
+                    $('#hardness_test_list_image_detail_dialog').dialog('close');
                 }
             }],
         onLoad: function () {
             $(this).dialog('center');
-            $('#print_mark_test_list_detail_image_form').form('load', row);
+            $('#hardness_test_list_detail_image_form').form('load', row);
         }
     });
 }

@@ -1,5 +1,5 @@
 <div style="padding: 1px;">
-    <form id="hot_cold_test_list_copy_form" method="post" novalidate enctype="multipart/form-data" class="table_form">
+    <form id="print_mark_test_list_copy_form" method="post" novalidate enctype="multipart/form-data" class="table_form">
         <table width="100%" border="0">
             <tr>
                 <td width="25%"><strong>RND Code</strong></td>

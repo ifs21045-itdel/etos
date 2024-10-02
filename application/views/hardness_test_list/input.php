@@ -1,24 +1,24 @@
 <div style="padding: 1px;">
-    <!--<form id="print_mark_test_list_input_form" method="post" novalidate enctype="multipart/form-data" class="table_form">-->
-    <form id="print_mark_test_list_input_form" method="post" novalidate class="table_form" enctype="multipart/form-data" >
+    <!--<form id="hardness_test_list_input_form" method="post" novalidate enctype="multipart/form-data" class="table_form">-->
+    <form id="hardness_test_list_input_form" method="post" novalidate class="table_form" enctype="multipart/form-data" >
         <table width="100%" border="0">
 
             <tr>
-                <td width='30%'><strong>Hot Cold Test Type</strong></td>
+                <td width='30%'><strong>hardness Test Type</strong></td>
                 <td>
                     <input class="easyui-combobox" 
-                           id="print_mark_test_protocol_id"
+                           id="hardness_test_protocol_id"
                            name="protocol_test_id"
-                           url="<?php echo site_url('protocol_test/get/Drop%20Test') ?>"
+                           url="<?php echo site_url('protocol_test/get/Hardness%20Test') ?>"
                            method="post"
                            mode="remote"
                            valueField="id"
                            textField="protocol_name"
-                           data-options="formatter: print_mark_test_protocol_format"
+                           data-options="formatter: hardness_test_protocol_format"
                            style="width: 100%" 
                            />
                     <script type="text/javascript">
-                        function print_mark_test_protocol_format(row) {
+                        function hardness_test_protocol_format(row) {
                             return '<span style="font-weight:bold;">' + row.protocol_name + ' - ' + row.test_name + '</span>';
                         }
                     </script>
@@ -27,11 +27,11 @@
             <tr>
                 <td width="15%"><strong>PO Item</strong></td>
                 <td>
-                    <input type="text" name="purchaseorder_item_id" required="true" id="print_mark_test_list_po_item_id" class="easyui-combogrid" style="width:100%;"/>
+                    <input type="text" name="purchaseorder_item_id" required="true" id="hardness_test_list_po_item_id" class="easyui-combogrid" style="width:100%;"/>
                     <script>
 
-                        $('#print_mark_test_list_po_item_id').combogrid({
-                            url: base_url + 'print_mark_test_list/get_item_po',
+                        $('#hardness_test_list_po_item_id').combogrid({
+                            url: base_url + 'hardness_test_list/get_item_po',
                             idField: 'valfield',
                             textField: 'myfield',
                             mode: 'remote',
@@ -53,8 +53,8 @@
                                     data = {total: data.length, rows: data};
                                 }
                                 $.map(data.rows, function (row) {
-                                    row.myfield = 'PO No:' + row.po_client_no + ':Ebako Code:' + row.ebako_code + ' Cust Code:' + row.customer_code + ' Clientid:' + row.client_id + ' Client name:' + row.client_name;
-                                    row.valfield = row.id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
+                                    row.myfield = 'PO No:' + row.po_client_no + ':Ebako Code:' + row.ebako_code + ' Cust Code:' + row.customer_code + ' Clientid:' + row.client_id + ' Client name:' + row.client_name ;
+                                    row.valfield = row.id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name+ '#' + row.product_id;
                                 });
                                 return data;
                             },
@@ -70,14 +70,14 @@
                 <td><strong>Client</strong></td>
                 <td>
                     <input class="easyui-combobox" 
-                           id="print_mark_test_client_id"
-                           name="print_mark_test_client_id"
+                           id="hardness_test_client_id"
+                           name="hardness_test_client_id"
                            url="<?php echo site_url('client/get') ?>"
                            method="post"
                            mode="remote"
                            valueField="id"
                            textField="name"
-                           data-options="formatter: print_mark_test_client_format"
+                           data-options="formatter: hardness_test_client_format"
                            style="width: 100%" 
                            />
                 </td>
@@ -96,10 +96,10 @@
             <tr>
                 <td><strong>Vendor</strong></td>
                 <td>
-                    <input type="text" name="vendor_id" required="true" id="print_mark_test_vendor_id" class="easyui-combogrid" style="width:100%;"/>
+                    <input type="text" name="vendor_id" required="true" id="hardness_test_vendor_id" class="easyui-combogrid" style="width:100%;"/>
                     <script>
 
-                        $('#print_mark_test_vendor_id').combogrid({
+                        $('#hardness_test_vendor_id').combogrid({
                             url: base_url + 'vendor/get',
                             idField: 'dt_vendor_val',
                             textField: 'dt_vendor_text',
