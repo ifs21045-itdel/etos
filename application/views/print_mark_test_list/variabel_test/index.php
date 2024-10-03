@@ -73,7 +73,7 @@
         });
     });
 
-    function showimage_product_test(value, row) {
+    function showimage_hardness_test(value, row) {
         var idrow = row.id;
         var temp = '';
         //alert(row.print_mark_test_list_id);
@@ -86,7 +86,7 @@
         }
         return temp;
     }
-    function showimage_product_test2(value, row) {
+    function showimage_hardness_test2(value, row) {
         var idrow = row.id;
         var temp = '';
         //alert(row.print_mark_test_list_id);

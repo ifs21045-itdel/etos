@@ -126,7 +126,7 @@
                 });
             });
 
-            function showimage_hardness_test_hardness_image(value, row) {
+            function showimage_hardness_test_product_image(value, row) {
                 var idrow = row.id;
                 var temp = '';
                 //alert(row.hardness_test_list_id);
