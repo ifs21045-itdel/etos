@@ -126,7 +126,7 @@
                 });
             });
 
-            function showimage_product_test_product_image(value, row) {
+            function showimage_hot_cold_test_product_image(value, row) {
                 var idrow = row.id;
                 var temp = '';
                 //alert(row.hot_cold_test_list_id);
