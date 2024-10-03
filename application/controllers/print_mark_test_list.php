@@ -233,7 +233,7 @@ class print_mark_test_list extends CI_Controller {
                     }
                     // Upload file to server 
                     if (move_uploaded_file($tempPath3, $originalPath3)) {
-                        $data_box['image2_file'] = $basename3;
+                        $data_box['image3_file'] = $basename3;
                     } else {
                         echo 'image 1 Not uploaded ! try again';
                         exit();
