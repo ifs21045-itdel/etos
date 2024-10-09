@@ -206,22 +206,6 @@ class model_hardness_test_list extends CI_Model {
         return json_encode($data);
     }
     
-
-    function get_item_po_by_id($id) {
-        $query = "SELECT poi.*, c.name client_name, po.po_client_no, p.ebako_code, p.customer_code, c.id client_id, 
-                         p.description, p.material, p.finishing
-                  FROM purchaseorder_item poi
-                  JOIN purchaseorder po ON po.id = poi.purchaseorder_id
-                  JOIN products p ON poi.product_id = p.id
-                  JOIN client c ON c.id = po.client_id
-                  WHERE poi.id = $id";
-    
-        // Jalankan query dan kembalikan hasilnya
-        return $this->db->query($query)->row(); // Mengambil satu baris berdasarkan id
-    }
-    
-
-    
     function select_by_id($id) {
         $query = " select t.*,p.test_name,p.protocol_name,pr.description as item_description from hardness_test_list t 
             left join protocol_test p on t.protocol_test_id=p.id 
