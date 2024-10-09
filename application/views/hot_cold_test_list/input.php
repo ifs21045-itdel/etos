@@ -9,7 +9,7 @@
                     <input class="easyui-combobox" 
                            id="hot_cold_test_protocol_id"
                            name="protocol_test_id"
-                           url="<?php echo site_url('protocol_test/get/hardness') ?>"
+                           url="<?php echo site_url('protocol_test/get/hot') ?>"
                            method="post"
                            mode="remote"
                            valueField="id"
