@@ -9,7 +9,7 @@
                     <input class="easyui-combobox" 
                            id="print_mark_test_protocol_id"
                            name="protocol_test_id"
-                           url="<?php echo site_url('protocol_test/get/Drop%20Test') ?>"
+                           url="<?php echo site_url('protocol_test/get/print') ?>"
                            method="post"
                            mode="remote"
                            valueField="id"
@@ -172,3 +172,4 @@
         </table>
     </form>
 </div>
+

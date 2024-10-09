@@ -182,25 +182,45 @@ class model_hardness_test_list extends CI_Model {
     }
 
     function get_item_po() {
-        $query = "select poi.*,c.name client_name,po.po_client_no,p.ebako_code,p.customer_code,c.id client_id,p.description,p.material,p.finishing "
-                . " from purchaseorder_item poi"
-                . " JOIN purchaseorder po on po.id=poi.purchaseorder_id "
-                . " JOIN products p on poi.product_id=p.id "
-                . " JOIN client c on c.id=po.client_id where poi.id not in (select purchaseorder_item_id from hardness_test_list) ";
-
+        $query = "SELECT poi.*, c.name AS client_name, po.po_client_no, p.ebako_code, 
+                         p.customer_code, c.id AS client_id, p.description, p.material, p.finishing 
+                  FROM purchaseorder_item poi
+                  JOIN purchaseorder po ON po.id = poi.purchaseorder_id 
+                  JOIN products p ON poi.product_id = p.id 
+                  JOIN client c ON c.id = po.client_id 
+                  WHERE poi.id NOT IN (SELECT purchaseorder_item_id FROM hardness_test_list) 
+                  OR poi.id = ANY (SELECT purchaseorder_item_id FROM hardness_test_list)";
+    
         //----------- search parameter for grid ----------------------
         $q = strtolower($this->input->post('q'));
         if (!empty($q)) {
-            $query .= " AND (LOWER(p.ebako_code) LIKE '%" . $q . "%' OR LOWER(p.customer_code) LIKE '%" . $q . "%' or po.po_client_no like '%" . $q . "%')";
+            $query .= " AND (LOWER(p.ebako_code) LIKE '%" . $q . "%' 
+                            OR LOWER(p.customer_code) LIKE '%" . $q . "%' 
+                            OR po.po_client_no LIKE '%" . $q . "%')";
         }
         //----------------------
-        $query .= " order by poi.id";
-        //echo $query;
-        $result = array();
-        $data = "";
-        $data = json_encode($this->db->query($query)->result());
-        return $data;
+        $query .= " ORDER BY poi.id";
+    
+        // Eksekusi query
+        $data = $this->db->query($query)->result();
+        return json_encode($data);
     }
+    
+
+    function get_item_po_by_id($id) {
+        $query = "SELECT poi.*, c.name client_name, po.po_client_no, p.ebako_code, p.customer_code, c.id client_id, 
+                         p.description, p.material, p.finishing
+                  FROM purchaseorder_item poi
+                  JOIN purchaseorder po ON po.id = poi.purchaseorder_id
+                  JOIN products p ON poi.product_id = p.id
+                  JOIN client c ON c.id = po.client_id
+                  WHERE poi.id = $id";
+    
+        // Jalankan query dan kembalikan hasilnya
+        return $this->db->query($query)->row(); // Mengambil satu baris berdasarkan id
+    }
+    
+
     
     function select_by_id($id) {
         $query = " select t.*,p.test_name,p.protocol_name,pr.description as item_description from hardness_test_list t 

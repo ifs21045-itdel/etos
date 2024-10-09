@@ -251,3 +251,231 @@ WITH (
 );
 ALTER TABLE public.product_test_list_detail
   OWNER TO postgres;
+
+
+--=======================
+-- Table: public.hot_cold_test_list
+
+-- product TABLE public.hot_cold_test_list;
+
+CREATE TABLE public.hot_cold_test_list
+(
+  id serial,
+  purchaseorder_item_id integer,
+  protocol_test_id integer,
+  po_client_no character varying,
+  vendor_id integer,
+  test_date date,
+  carton_dimension character varying,
+  gross_weight double precision,
+  rating character varying,
+  brand character varying,
+  report_date date,
+  product_dimension character varying,
+  notes text,
+  client_id integer,
+  client_name character varying,
+  ebako_code character varying,
+  customer_code character varying,
+  vendor_name character varying,
+  report_no character varying,
+  submited boolean,
+  product_id integer,
+  nett_weight double precision,
+  product_image character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  CONSTRAINT hot_cold_test_list_pkey PRIMARY KEY (id),
+  CONSTRAINT hot_cold_test_list_purchaseorder_item_id_fkey FOREIGN KEY (purchaseorder_item_id)
+      REFERENCES public.purchaseorder_item (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.hot_cold_test_list
+  OWNER TO postgres;
+
+
+-- Table: public.hot_cold_test_list_detail
+
+-- product TABLE public.hot_cold_test_list_detail;
+
+CREATE TABLE public.hot_cold_test_list_detail
+(
+  id serial,
+  hot_cold_test_list_id integer,
+  evaluation text,
+  method text,
+  var_type character varying,
+  mandatory boolean DEFAULT false,
+  notes text,
+  image_file character varying,
+  image2_file character varying,
+  image3_file character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  result_test_var character varying,
+  CONSTRAINT hot_cold_test_list_detail_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.hot_cold_test_list_detail
+  OWNER TO postgres;
+
+
+--=======================
+-- Table: public.print_mark_test_list
+
+-- product TABLE public.print_mark_test_list;
+
+CREATE TABLE public.print_mark_test_list
+(
+  id serial,
+  purchaseorder_item_id integer,
+  protocol_test_id integer,
+  po_client_no character varying,
+  vendor_id integer,
+  test_date date,
+  carton_dimension character varying,
+  gross_weight double precision,
+  rating character varying,
+  brand character varying,
+  report_date date,
+  product_dimension character varying,
+  notes text,
+  client_id integer,
+  client_name character varying,
+  ebako_code character varying,
+  customer_code character varying,
+  vendor_name character varying,
+  report_no character varying,
+  submited boolean,
+  product_id integer,
+  nett_weight double precision,
+  product_image character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  CONSTRAINT print_mark_test_list_pkey PRIMARY KEY (id),
+  CONSTRAINT print_mark_test_list_purchaseorder_item_id_fkey FOREIGN KEY (purchaseorder_item_id)
+      REFERENCES public.purchaseorder_item (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.print_mark_test_list
+  OWNER TO postgres;
+
+
+-- Table: public.print_mark_test_list_detail
+
+-- product TABLE public.print_mark_test_list_detail;
+
+CREATE TABLE public.print_mark_test_list_detail
+(
+  id serial,
+  print_mark_test_list_id integer,
+  evaluation text,
+  method text,
+  var_type character varying,
+  mandatory boolean DEFAULT false,
+  notes text,
+  image_file character varying,
+  image2_file character varying,
+  image3_file character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  result_test_var character varying,
+  CONSTRAINT print_mark_test_list_detail_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.print_mark_test_list_detail
+  OWNER TO postgres;
+
+
+--=======================
+-- Table: public.hardness_test_list
+
+-- product TABLE public.hardness_test_list;
+
+CREATE TABLE public.hardness_test_list
+(
+  id serial,
+  purchaseorder_item_id integer,
+  protocol_test_id integer,
+  po_client_no character varying,
+  vendor_id integer,
+  test_date date,
+  carton_dimension character varying,
+  gross_weight double precision,
+  rating character varying,
+  brand character varying,
+  report_date date,
+  product_dimension character varying,
+  notes text,
+  client_id integer,
+  client_name character varying,
+  ebako_code character varying,
+  customer_code character varying,
+  vendor_name character varying,
+  report_no character varying,
+  submited boolean,
+  product_id integer,
+  nett_weight double precision,
+  product_image character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  CONSTRAINT hardness_test_list_pkey PRIMARY KEY (id),
+  CONSTRAINT hardness_test_list_purchaseorder_item_id_fkey FOREIGN KEY (purchaseorder_item_id)
+      REFERENCES public.purchaseorder_item (id) MATCH SIMPLE
+      ON UPDATE CASCADE ON DELETE CASCADE
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.hardness_test_list
+  OWNER TO postgres;
+
+
+-- Table: public.hardness_test_list_detail
+
+-- product TABLE public.hardness_test_list_detail;
+
+CREATE TABLE public.hardness_test_list_detail
+(
+  id serial,
+  hardness_test_list_id integer,
+  evaluation text,
+  method text,
+  var_type character varying,
+  mandatory boolean DEFAULT false,
+  notes text,
+  image_file character varying,
+  image2_file character varying,
+  image3_file character varying,
+  created_by bigint,
+  created_at timestamp without time zone NOT NULL DEFAULT now(),
+  updated_by bigint,
+  updated_at timestamp without time zone,
+  result_test_var character varying,
+  CONSTRAINT hardness_test_list_detail_pkey PRIMARY KEY (id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.hardness_test_list_detail
+  OWNER TO postgres;

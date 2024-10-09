@@ -287,6 +287,11 @@ class hardness_test_list extends CI_Controller{
         echo $this->model_hardness_test_list->get_item_po();
     }
 
+    function get_item_po_by_id($id) {
+        $result = $this->model_hardness_test_list->get_item_po_by_id($id);
+
+        echo json_encode($result);
+    }
     //================================================== variabel test upload photo
 
     function variabel_test_input($id, $type_form) {

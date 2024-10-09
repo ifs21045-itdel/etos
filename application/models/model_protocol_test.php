@@ -37,7 +37,7 @@ class model_protocol_test extends CI_Model {
         $order = $this->input->post('order');
         //echo $sort;
         if($flag!="")
-            $query .= "and test_name='".str_replace('%20', ' ', $flag)."'";
+        $query .= "and test_name ilike '$flag%'";
         if (!empty($sort)) {
             $arr_sort = explode(',', $sort);
             $arr_order = explode(',', $order);
