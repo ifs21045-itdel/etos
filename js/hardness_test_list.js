@@ -88,7 +88,7 @@ function hardness_test_list_edit() {
             resizable: true,
             top: 60,
             buttons: [{
-                    text: 'Save',
+                    text: 'Savedddd',
                     iconCls: 'icon-save',
                     handler: function () {
                         hardness_test_list_save(row.image);
