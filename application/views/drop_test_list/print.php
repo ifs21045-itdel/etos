@@ -214,37 +214,105 @@
                 <td colspan="7" style="height: 50px;"></td> <!-- Adjust height for spacing -->
             </tr>
             <tr>
+    <!-- Kolom Kiri: Gambar Sampel -->
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                            <tr>
-                                <th colspan="4" style="text-align: center;">Sample Picture</th>
-                            </tr>
-                            <tr style="height: 400px;">
-                                <th align='center' style="vertical-align: middle;" colspan="4">
-                                    <?php
-                                    if (trim($drop_test_list->product_image) != "") {
-                                        $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $drop_test_list->id . "/" . $drop_test_list->product_image;
-                                       echo "<img src='" . $image . "' style='max-width: auto; height: auto; display: block; margin: 0 auto;' />";
-
-                                    }
-                                    ?>
-                                </th>
-                        </tr>  
-                    </table>
-                </td>
-                <td width="1%"></td>
-                <td colspan="3" width="48%">
-                    <table class="table-border-luar">
+                        <!-- Judul Kolom: Sample Picture -->
                         <tr>
-                            <th colspan="3" style="text-align: center;">Corrective Action Item</th>
+                            <th colspan="4" style="text-align: center;">Sample Picture</th>
                         </tr>
-                        
-                        <tr>
-                        <td style="widht:500;height: 100" align="center">&nbsp;</td>
-                    </tr>
+                        <!-- Baris Gambar -->
+                        <tr style="height: 384px;">
+                            <td align="center" style="vertical-align: middle; width: 150    px;" colspan="4">
+                                <!-- Cek apakah ada gambar produk -->
+                                <?php
+                                if (trim($drop_test_list->product_image) != "") {
+                                    // Mendapatkan URL gambar
+                                    $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $drop_test_list->id . "/" . $drop_test_list->product_image;
+                                    $width = 3 * 60;  
+                                    $height = 4 * 60; 
+                                    echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                }
+                                ?>
+                            </td>
+                        </tr>
                     </table>
                 </td>
+
+    <!-- Spasi Antara Kedua Kolom -->
+                <td width="1%"></td>
+
+            <td colspan="3" width="40%" rowspan="1">
+                <table class="table-border-luar">
+                    <!-- Judul Kolom: Corrective Action Item -->
+                    <tr>
+                        <th colspan="3" style="text-align: center;">Corrective Action Item</th>
+                    </tr>
+
+                    <!-- Baris Kosong untuk Penyesuaian Ruang Tabel -->
+                    <tr style="height: 384px;"></tr>
+                </table>
+            </td>
             </tr>
+          <!--=========================rapikan yang dibawah agar bagus ketika di print======================-->
+          <tr>
+            <th bgcolor='#ffff99' colspan="7" align="center">TEST RESULT SUMMARY</th>
+         </tr> 
+         <tr>
+    <td colspan="7">
+        <table cellpadding="0" cellspacing="0" width="100%" class="table-border-luar-dalam">
+            <?php
+            foreach ($drop_test_list_detail as $result) {
+                if ($result->var_type == 'Description') {
+                    ?>
+                    <tr>
+                        <td width="50%" style="border: 1px solid #000; padding: 8px;">
+                            <?php echo $result->method; ?>
+                        </td>
+                        <td width="50%" style="border: 1px solid #000; padding: 8px;">
+                            <?php echo $result->notes; ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+            ?>
+        </table>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="7">
+        <table cellpadding="0" cellspacing="0" width="100%" class="table-border-luar-dalam">
+            <?php
+            foreach ($drop_test_list_detail as $result) {
+                if ($result->var_type != 'Description') {
+                    ?>
+                    <tr style="height: 384px;">
+                        <td width="50%" style="border: 1px solid #000; padding: 8px;" colspan ="4">
+                            <?php echo $result->method; ?>
+                        </td>
+                        <td width="50%" align="center" style="border: 1px solid #000; padding: 8px;" colspan="5">
+                            <?php
+                            if (trim($result->image_file) != "") {
+                                $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $result->drop_test_list_id . "/" . $result->image_file;
+                               $width = 3 * 60;  
+                                    $height = 4 * 60; 
+                                    echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+            }
+            ?>
+        </table>
+    </td>
+</tr>
+
+
            
         </tbody>
     </table>
