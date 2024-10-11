@@ -141,7 +141,6 @@
             }
         </script>
     </div>
-
     <div region="south" 
          style="height:45%;"
          split="true"

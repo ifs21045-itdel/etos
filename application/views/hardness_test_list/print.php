@@ -39,16 +39,34 @@
             padding: 8px;
             border: 1px solid black; /* Border dalam */
         }
+        .center-image {
+            display: block;
+            margin: 0 auto; 
+            max-width: 100%; 
+            height: auto;
+        }
+        .table-border-luar-dalam td img {
+        display: block;
+        margin: 0 auto;
+        }
+        table.table-border-luar-dalam {
+        table-layout: fixed; /* Membatasi lebar sel */
+        width: 100%; /* Pastikan tabel menggunakan seluruh lebar area */
+        }
+        table.table-border-luar-dalam td, table.table-border-luar-dalam th {
+            word-wrap: break-word; /* Memastikan teks tidak melampaui batas sel */
+            vertical-align: middle; /* Posisikan konten sel di tengah */
+        }
     </style>
 </head>
 <!--<table border="1" align="center" class="table-border-luar-dalam" width="1000">-->
 <table border="1" align="center" class="table-border-luar" width="1000">
     <thead>
-        <tr>
-            <td  align='center' width="34%">
-                <?php
+        <tr style="height: 100px;">
+            <td  align='center' width="50%">
+            <?php
                 $image = $_SERVER["HTTP_REFERER"] . 'files/logo.png';
-                echo "<img src='" . $image . "' width='100'>";
+                echo "<img src='" . $image . "' style='max-width: 100%; height: auto; display: block; margin: 0 auto;' />";
                 ?>
             </td>
             <td colspan="5" align="center"  width="33%"><h3>IN-HOUSE TEST REPORT</h3></td>
@@ -130,12 +148,10 @@
                     </tr>
                     <tr>
                         <td height="100" width="500" align="center">
-
-                            <?php
+                        <?php
                             if (trim($hardness_test_list->hardness_image) != "") {
                                 $image = $_SERVER["HTTP_REFERER"] . 'files/hardnesstest/' . $hardness_test_list->id . "/" . $hardness_test_list->hardness_image;
-                               // echo $image;
-                                echo "<img src='" . $image . "' width='175' heigth='100'>";
+                                echo "<img src='" . $image . "' style='max-width: 100%; height: auto; display: block; margin: 0 auto;' />";
                             }
                             ?>
                         </td>
