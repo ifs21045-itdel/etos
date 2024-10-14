@@ -81,8 +81,8 @@
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }
@@ -94,8 +94,8 @@
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image2_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image2_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }
@@ -107,8 +107,8 @@
             var temp = '';
         else {
             //var temp=row.image_file;
-            var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image3_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/producttest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+            var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image3_file + "' width=90 height=90 onclick='print_mark_test_list_variabel_test_view_detail(" + idrow + ")'>";
+            //var temp = "<img src='files/printmarktest/" + row.print_mark_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
         }
         return temp;
     }

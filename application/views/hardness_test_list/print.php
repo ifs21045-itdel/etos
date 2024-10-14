@@ -39,24 +39,6 @@
             padding: 8px;
             border: 1px solid black; /* Border dalam */
         }
-        .center-image {
-            display: block;
-            margin: 0 auto; 
-            max-width: 100%; 
-            height: auto;
-        }
-        .table-border-luar-dalam td img {
-        display: block;
-        margin: 0 auto;
-        }
-        table.table-border-luar-dalam {
-        table-layout: fixed; /* Membatasi lebar sel */
-        width: 100%; /* Pastikan tabel menggunakan seluruh lebar area */
-        }
-        table.table-border-luar-dalam td, table.table-border-luar-dalam th {
-            word-wrap: break-word; /* Memastikan teks tidak melampaui batas sel */
-            vertical-align: middle; /* Posisikan konten sel di tengah */
-        }
     </style>
 </head>
 <!--<table border="1" align="center" class="table-border-luar-dalam" width="1000">-->
