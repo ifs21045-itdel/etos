@@ -99,11 +99,40 @@
                 <!-- Bagian Kanan (Spesifikasi Produk) -->
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                        <tr><th colspan="3" style="text-align: center;">RESULT</th></tr>
-                        <tr><td>PASS</td><td colspan="2"></td></tr>
-                        <tr><td>FAIL</td><td colspan="2"></td></tr>
-                        <tr><td>CAR</td><td colspan="2"></td></tr>
-                    </table>
+                    <tr>
+                            <!-- <th colspan="2" style="text-align: center; background-color: #d0f0c0;">RESULT</th> -->
+                        </tr>
+                        <tr>
+                            <td>PASS</td>
+        
+                            <td width='70%' align='center' >
+                                <?php
+                                if ($hardness_test_list->rating == 'Passed')
+                                    echo '<b>X</b>';
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>FAIL</td>
+        
+                            <td width='70%' align='center'> 
+                                <?php
+                                if ($hardness_test_list->rating == 'Failed')
+                                    echo '<b>X</b>';
+                                ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CAR</td>
+        
+                            <td width='7    0%' align='center' >
+                                <?php
+                                if ($hardness_test_list->rating == 'Car')
+                                    echo '<b>X</b>';
+                                ?>
+                            </td>
+                        </tr>    
+                </table>
                 </td>
             </tr>
 
