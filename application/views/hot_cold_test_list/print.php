@@ -175,6 +175,7 @@
                     </table>
                 </td>
             </tr>
+            
             <!-- Baris Kosong untuk Spasi -->
             <tr class="no-border">
                 <td colspan="7" style="height: 50px;"></td>
@@ -188,8 +189,80 @@
                 <tr><td>Type of Report</td><td colspan="6"><?php echo $hot_cold_test_list->test_name; ?></td></tr>
             </tr>
             <!-- Baris Kosong untuk Spasi -->
+             <!-- Tabel Kondisi Pengujian (Testing Conditions) -->
+             <tr class="no-border">
+                <td colspan="7" style="height: 50px;"></td>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <table class="table-border-luar" style="text-align: center; width: 100%;">
+                        <tr>
+                            <th colspan="3" style="background-color: #d0f0c0;">Testing Conditions (1 Cycle) = Total 10 Cycles</th>
+                        </tr>
+                        <tr>
+                            <td style="width: 33%;">Condition A</td>
+                            <td style="width: 33%;">Temperature <?php echo $hot_cold_test_list->condition_a_temp; ?>°C (oven)</td>
+                            <td style="width: 33%;">Duration <?php echo $hot_cold_test_list->condition_a_duration; ?> hour</td>
+                        </tr>
+                        <tr>
+                            <td>Room Temperature Rest</td>
+                            <td colspan="2"><?php echo $hot_cold_test_list->room_temp_rest_a_duration; ?> minutes</td>
+                        </tr>
+                        <tr>
+                            <td>Condition B</td>
+                            <td>Temperature <?php echo $hot_cold_test_list->condition_b_temp; ?>°C (freezer)</td>
+                            <td>Duration <?php echo $hot_cold_test_list->condition_b_duration; ?> hour</td>
+                        </tr>
+                        <tr>
+                            <td>Room Temperature Rest</td>
+                            <td colspan="2"><?php echo $hot_cold_test_list->room_temp_rest_b_duration; ?> minutes</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+
+            
+            <!-- Tabel Testing Progress -->
+            <tr class="no-border">
+                <td colspan="7" style="height: 50px;"></td>
+            </tr>
+            <!-- Tabel Testing Progress -->
+
+            <tr>
+                <td colspan="7">
+                    <table class="table-border-luar" style="text-align: center; width: 100%;">
+                       
+                        <tr>
+                            <th colspan="11" style="background-color: #d0f0c0;">Testing Progress</th>
+                        </tr>
+                        <tr>
+                            <td style="width: 10%;">Cycle</td>
+                            <?php for ($i = 1; $i <= 10; $i++) { ?>
+                                <td><?php echo $i; ?></td>
+                            <?php } ?>
+                        </tr>
+                        
+                        <tr>
+                            <td>Status</td>
+                            <?php 
+                          
+                            for ($i = 1; $i <= $hot_cold_test_list->cycles; $i++) { ?>
+                                <td>√</td>
+                            <?php } ?>
+                            
+                            <?php for ($i = $hot_cold_test_list->cycles + 1; $i <= 10; $i++) { ?>
+                                <td>-</td>
+                            <?php } ?>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+
+
            
-            <tr><th colspan="7">TEST RESULT SUMMARY</th></tr>
+            
             </tr>
             </tr>
                 <td colspan="7">
@@ -205,20 +278,23 @@
                 </td>
             </tr>
             <!-- Rincian Test Non-Deskripsi -->
+            <!-- Test Result Summary Table -->
+<tr class="no-border">
+    <td colspan="7" style="height: 50px;"></td> <!-- Spasi -->
+</tr>
+<tr>
+    <td colspan="7">
+        <table class="table-border-luar" style="width: 100%; text-align: center;">
             <tr>
-            <td colspan="7">
-                <table cellpadding="0" cellspacing="0" width="100%" class="table-border-luar-dalam">    
-                <tr><td>Pencil Hardness</td><td colspan="3">Result</td><td colspan="3">Picture</td></tr>
+                <th colspan="7" style="background-color: #d0f0c0; text-align: center;">TEST RESULT SUMMARY</th>
+            </tr>
+
+            <!-- Looping untuk setiap hasil pengujian -->
+            <?php foreach ($hot_cold_test_list_detail as $result) { ?>
+                <tr>
+                    <!-- Gambar Kiri dari $result->image_file -->
+                    <td colspan="3" style="text-align: center;">
                     <?php
-                    foreach ($hot_cold_test_list_detail as $result) {
-                        if ($result->var_type != 'Description') {
-                            ?>
-                            <tr style="height: 384px;">
-                                <td style="border: 1px solid #000; padding: 8px;" colspan="3">
-                                    <?php echo $result->method; ?>
-                                </td>
-                                <td width="50%" align="center" style="border: 1px solid #000; padding: 8px;">
-                                    <?php
                                     if (trim($result->image_file) != "") {
                                         $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image_file;
                                         $width = 3 * 60;  
@@ -227,18 +303,32 @@
                                         echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
                                     }
                                     ?>
-                                </td>
-                                <td width="50%" style="border: 1px solid #000; padding: 8px;">
-                                    <?php echo $result->method; ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    ?>
-                </table>
-            </td>
-        </tr>
+                    </td>
+
+                    <!-- Gambar Kanan dari $result->image2_file -->
+                    <td colspan="3" style="text-align: center;">
+                    <?php
+                                    if (trim($result->image_file) != "") {
+                                        $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image2_file;
+                                        $width = 3 * 60;  
+                                        $height = 4 * 60; 
+                                        echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                        echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
+                                    }
+                                    ?>
+                    </td>
+                </tr>
+
+                <!-- Baris untuk Nama Material dan Status Hasil Pengujian -->
+                <tr>
+                    <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->evaluation; ?></td>
+                    <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->result_test_var; ?></td>
+                </tr>
+            <?php } ?>
+        </table>
+    </td>
+</tr>
+
             
         </tbody>
     </table>

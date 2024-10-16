@@ -201,7 +201,7 @@ class hot_cold_test_list extends CI_Controller{
             'evaluation' => $this->input->post('evaluation'),
             // 'method' => $this->input->post('method'),
             // 'notes' => $this->input->post('notes'),
-            // 'result_test_var' => $this->input->post('result_test_var'),
+            'result_test_var' => $this->input->post('result_test_var'),
             'mandatory' => 't',
             'var_type' => 'Photo'
         );

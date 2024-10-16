@@ -31,13 +31,15 @@
             <tr>
                 <td><strong>Result</strong></td>
                 <td>
-                    <select name="result_test_var" required="ture">
+                    <select name="result_test_var" required="true" id="result_test_var">
+                        <option value=""></option>
                         <option value="Passed">Passed</option>
-                        <option value="Failed">Failed </option>
-                        <option value="Car">Car </option>
+                        <option value="Failed">Failed</option>
+                        <option value="Car">Car</option>
                     </select>
                 </td>
             </tr>
+
             <tr>
                 <td colspan='2'>
 
