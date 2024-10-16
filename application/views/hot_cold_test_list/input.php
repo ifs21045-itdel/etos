@@ -2,7 +2,7 @@
     <!--<form id="hot_cold_test_list_input_form" method="post" novalidate enctype="multipart/form-data" class="table_form">-->
     <form id="hot_cold_test_list_input_form" method="post" novalidate class="table_form" enctype="multipart/form-data" >
         <table width="100%" border="0">
-
+  
             <tr>
                 <td width='30%'><strong>Hot Cold Test Type</strong></td>
                 <td>
@@ -158,7 +158,7 @@
             <tr>
                 <td><strong>Nett Weight (Lbs)</strong></td>
                 <td><input name="nett_weight"  class="easyui-numberbox" style="width: 38%;"/></td>
-            </tr> 
+            </tr>
             <tr>
                 <td><strong>Notes</strong></td>
                 <td>
@@ -168,6 +168,47 @@
             <tr>
                 <td width="25%"><strong>Product Photo</strong></td>
                 <td width="75%"><input type="file" name="product_image" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
+            </tr>
+            <tr>
+                <td width="25%"><strong>Corrective Action Plan</strong></td>
+                <td width="75%"><input type="file" name="corrective_action_plan_image" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="background-color: #e8f5e9;">
+                    <strong>Testing Conditions (1 Cycle) = Total 10 Cycles</strong>
+                </td>
+            </tr>
+            <tr>
+                <td width="35%"><strong>Condition A</strong></td>
+                <td width="65%">
+                    Temperature: <input type="number" name="condition_a_temp" value="50" style="width: 50px;">°C (oven)
+                    Duration: <input type="number" name="condition_a_duration" value="1" style="width: 50px;"> hour
+                </td>
+            </tr>
+            <tr>
+                <td width="35%"><strong>Room Temperature Rest (A)</strong></td>
+                <td width="65%">
+                    Rest Duration: <input type="number" name="room_temp_rest_a_duration" value="30" style="width: 50px;"> minutes
+                </td>
+            </tr>
+            <tr>
+                <td width="35%"><strong>Condition B</strong></td>
+                <td width="65%">
+                    Temperature: <input type="number" name="condition_b_temp" value="-20" style="width: 50px;">°C (freezer)
+                    Duration: <input type="number" name="condition_b_duration" value="1" style="width: 50px;"> hour
+                </td>
+            </tr>
+            <tr>
+                <td width="35%"><strong>Room Temperature Rest (B)</strong></td>
+                <td width="65%">
+                    Rest Duration: <input type="number" name="room_temp_rest_b_duration" value="30" style="width: 50px;"> minutes
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Total Cycles</strong></td>
+                <td>
+                    <input type="number" name="cycles" class="easyui-validatebox" style="width: 98%;height: 35px" min="0" max="10" required>
+                </td>
             </tr>
         </table>
     </form>

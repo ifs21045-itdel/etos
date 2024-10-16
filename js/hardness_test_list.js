@@ -88,7 +88,7 @@ function hardness_test_list_edit() {
             resizable: true,
             top: 60,
             buttons: [{
-                    text: 'Savedddd',
+                    text: 'Save',
                     iconCls: 'icon-save',
                     handler: function () {
                         hardness_test_list_save(row.image);
@@ -109,7 +109,7 @@ function hardness_test_list_edit() {
                         
                 $('#hardness_test_list_po_item_id').combogrid('setValue', poDetails);
 
-                var vendorDetails =  row.vendor_id + '#' + row.vendor_code + "#" + row.vendor_name;
+                var vendorDetails =  row.vendor_id +"#" + row.vendor_name;
                                 
                         
                 $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);

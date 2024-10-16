@@ -81,7 +81,8 @@
                     <th field="report_date" halign="center">Report Date</th>
                     <th field="rating" halign="center">Rating/Status</th>
                     <th field="submited" halign="center">Submited</th>
-            <th  field="product_image"  valign="center" align=center formatter="showimage_product_test_product_image">Image 3</th>
+            <th  field="product_image"  valign="center" align=center formatter="showimage_product_test_product_image">Image Product</th>
+            <th  field="corrective_action_plan_image"  valign="center" align=center formatter="showimage_product_test_corrective_action_plan">Corrective Action Plan</th>
                 </tr>
             </thead>
         </table>
@@ -129,16 +130,28 @@
             function showimage_product_test_product_image(value, row) {
                 var idrow = row.id;
                 var temp = '';
-                //alert(row.hot_cold_test_list_id);
-                if (row.product_image == null)
-                    var temp = '';
-                else {
-                    //var temp=row.image_file;
-                    var temp = "<img src='files/hotcoldtest/" + row.id + "/" + row.product_image + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
-                    //var temp = "<img src='files/producttest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+                if (row.product_image == null || row.product_image === '') {
+                    temp = ''; // Tidak menampilkan apa-apa jika tidak ada gambar
+                } else {
+                    // Sesuaikan direktori penyimpanan untuk gambar produk
+                    temp = "<img src='files/hotcoldtest/" + row.id +"/" + row.product_image + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
                 }
                 return temp;
             }
+
+            function showimage_product_test_corrective_action_plan(value, row) {
+                var idrow = row.id;
+                var temp = '';
+                // Periksa apakah `corrective_action_plan_image` ada dan tidak kosong
+                if (row.corrective_action_plan_image == null || row.corrective_action_plan_image === '') {
+                    temp = ''; // Tidak menampilkan apa-apa jika tidak ada gambar
+                } else {
+                    // Sesuaikan direktori penyimpanan untuk gambar corrective action plan
+                    temp = "<img src='files/hotcoldtest/" + row.id +"/" + row.corrective_action_plan_image + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
+                }
+                return temp;
+            }
+
         </script>
     </div>
 
