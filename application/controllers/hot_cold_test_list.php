@@ -42,12 +42,8 @@ class hot_cold_test_list extends CI_Controller{
             "product_id" => $poitem[6] ?: NULL, 
             "submited" => 'f',
             "test_date" => $this->input->post('test_date') ?: NULL,
-            "carton_dimension" => $this->input->post('carton_dimension'),
-            "gross_weight" => $this->input->post('gross_weight') ?: 0, // Default to 0 jika kosong
-            "nett_weight" => $this->input->post('nett_weight') ?: 0, // Default to 0 jika kosong
             "brand" => $this->input->post('brand'),
             "report_date" => $this->input->post('report_date') ?: NULL,
-            "product_dimension" => $this->input->post('product_dimension'),
             "report_no" => $this->input->post('report_no'),
             "notes" => $this->input->post('notes'),
             "condition_a_temp" => $this->input->post('condition_a_temp') ?: NULL,

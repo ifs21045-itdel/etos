@@ -25,10 +25,10 @@
             <tr>
                 <td width="15%"><strong>PO Item</strong></td>
                 <td>
-                    <input type="text" name="purchaseorder_item_id" id="hot_cold_test_list_po_item_id" required="true" class="easyui-combogrid" style="width:100%;"/>
+                    <input type="text" name="purchaseorder_item_id" id="drop_test_list_po_item_id" required="true" class="easyui-combogrid" style="width:100%;"/>
                     <script>
-                        $('#hot_cold_test_list_po_item_id').combogrid({
-                            url: base_url + 'hot_cold_test_list/get_item_po',
+                        $('#drop_test_list_po_item_id').combogrid({
+                            url: base_url + 'drop_test_list/get_item_po',
                             idField: 'valfield',
                             textField: 'myfield',
                             mode: 'remote',
@@ -99,7 +99,7 @@
                         });
                     </script>
                 </td>
-            </tr>>                    
+            </tr>                  
             <tr>
                 <td><strong>Test Date</strong></td>
                 <td><input name="test_date" class="easyui-datebox" id="hot_cold_test_date_id" style="width: 50%;" data-options="formatter:myformatter,parser:myparser" style="width: 69%;"></td>
@@ -112,22 +112,6 @@
                 <td><strong>Report Number</strong></td>
                 <td><input name="report_no" class="easyui-validatebox" id="hot_cold_test_report_no_id" style="width: 58%;"/></td>
             </tr> 
-            <tr>
-                <td><strong>Product Dimension  (Inches)</strong></td>
-                <td><input name="product_dimension" class="easyui-validatebox" id="hot_cold_test_product_dimension_id" style="width: 58%;"/></td>
-            </tr> 
-            <tr>
-                <td><strong>Carton Dimension  (Inches)</strong></td>
-                <td><input name="carton_dimension" class="easyui-validatebox" id="hot_cold_test_carton_dimension_id" style="width: 58%;"/></td>
-            </tr> 
-            <tr>
-                <td><strong>Gross Weight (Lbs)</strong></td>
-                <td><input name="gross_weight" class="easyui-numberbox" id="hot_cold_test_gross_weight_id" style="width: 38%;"/></td>
-            </tr> 
-            <tr>
-                <td><strong>Nett Weight (Lbs)</strong></td>
-                <td><input name="nett_weight" class="easyui-numberbox" id="hot_cold_test_nett_weight_id" style="width: 38%;"/></td>
-            </tr>
             <tr>
                 <td><strong>Notes</strong></td>
                 <td><textarea name="notes" class="easyui-validatebox" id="hot_cold_test_notes_id" style="width: 98%;height: 35px"></textarea></td>

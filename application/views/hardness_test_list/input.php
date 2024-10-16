@@ -144,22 +144,6 @@
                     <td><input name="report_no"  class="easyui-validatebox" style="width: 58%;"/></td>
                 </tr> 
                 <tr>
-                    <td><strong>Product Dimention  (Inches)</strong></td>
-                    <td><input name="product_dimension"  class="easyui-validatebox" style="width: 58%;"/></td>
-                </tr> 
-                <tr>
-                    <td><strong>Carton Dimention  (Inches)</strong></td>
-                    <td><input name="carton_dimension"  class="easyui-validatebox" style="width: 58%;"/></td>
-                </tr> 
-                <tr>
-                    <td><strong>Gross Weight (Lbs)</strong></td>
-                    <td><input name="gross_weight"  class="easyui-numberbox" style="width: 38%;"/></td>
-                </tr> 
-                <tr>
-                    <td><strong>Nett Weight (Lbs)</strong></td>
-                    <td><input name="nett_weight"  class="easyui-numberbox" style="width: 38%;"/></td>
-                </tr> 
-                <tr>
                     <td><strong>Notes</strong></td>
                     <td>
                         <textarea name="notes" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
