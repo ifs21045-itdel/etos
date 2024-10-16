@@ -103,6 +103,16 @@ function hot_cold_test_list_edit() {
             onLoad: function () {
                 $('#hot_cold_test_list_detail_tr_component').remove();
                 $('#hot_cold_test_list_input_form').form('load', row);
+                var poDetails =  row.purchaseorder_item_id + '#' + row.po_client_no 
+                                + '#' + row.ebako_code + '#' + row.customer_code 
+                                + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
+                        
+                $('#hot_cold_test_list_po_item_id').combogrid('setValue', poDetails);
+
+                var vendorDetails =  row.vendor_id +"#" + row.vendor_name;
+                                
+                        
+                $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);
                 var material_temp = row.material_id.replace(/[({}]/g, "");
                 var material = material_temp.split(',');
                 $('#material_id').combobox('setValues', material);
