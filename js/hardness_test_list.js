@@ -15,7 +15,7 @@ function hardness_test_list_add() {
     }
 
     $('#hardness_test_list_detail_dialog').dialog({
-        title: 'Packing Configuration',
+        title: 'Test Report',
         width: 700,
         height: 'auto',
         href: base_url + 'hardness_test_list/input',
@@ -297,7 +297,7 @@ function hardness_test_list_hardness_test_list_detail_add() {
             $('#bodydata').append("<div id='hardness_test_list_detail_dialog'></div>");
         }
         $('#hardness_test_list_detail_dialog').dialog({
-            title: 'Packing Configuration',
+            title: 'Test Report',
             width: 500,
             height: 'auto',
             href: base_url + 'hardness_test_list/hardness_test_list_detail_input',

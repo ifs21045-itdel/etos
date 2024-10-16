@@ -72,7 +72,7 @@
                     ?>
                 </td>
                 <td colspan="5" width="33%" style="height: 150px; vertical-align: middle; text-align: center;">
-                    <h3 style="margin: 0; font-size: 24px;">IN-HOUSE TEST REPORT</h3>
+                    <h3 style="margin: 0; font-size: 24px;">TEST REPORT</h3>
                 </td>
                 <td align='center' width="34%" style="height: 150px; vertical-align: middle; text-align: center;">
                     <h3 style="margin: 0; font-size: 24px;">Quality Assurance Department</h3>
