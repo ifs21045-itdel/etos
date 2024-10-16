@@ -100,7 +100,7 @@
                 <td width="48%">
                     <table class="table-border-luar">
                         <tr>
-                            <th colspan="2" style="text-align: center; background-color: #d0f0c0;">RESULT</th>
+                            <!-- <th colspan="2" style="text-align: center; background-color: #d0f0c0;">RESULT</th> -->
                         </tr>
                         <tr>
                             <td>PASS</td>
