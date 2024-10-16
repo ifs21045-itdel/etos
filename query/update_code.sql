@@ -26,5 +26,5 @@ ALTER TABLE public.drop_test_list
 ADD COLUMN corrective_action_plan_image character varying;
 
 --alter table pada hardness test list
-ALTER TABLE public.hardness_test_list
+ALTER TABLE public.drop_test_list
 ADD COLUMN corrective_action_plan_image character varying;
