@@ -241,6 +241,41 @@ class hardness_test_list extends CI_Controller{
                 }
             }
         }
+        $nametemp_corrective_action_plan = 'corrective_action_plan_image';
+        if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+            $directory_corrective = 'files/hardnesstest/' . $id_dir;
+    
+            if (!file_exists($directory_corrective)) {
+                $oldumask = umask(0);
+                mkdir($directory_corrective, 0777, true); // true untuk membuat folder secara rekursif jika tidak ada
+                umask($oldumask);
+            }
+    
+            $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
+            $uploadTo = $directory_corrective;
+    
+            if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+                $imageName = $_FILES[$nametemp_corrective_action_plan]['name'];
+                $tempPath = $_FILES[$nametemp_corrective_action_plan]["tmp_name"];
+                $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+                $basename_corrective = 'corrective_action_plan-' . $id_dir .'.' . $imageType;
+                $originalPath_corrective = $directory_corrective . '/' . $basename_corrective;
+    
+                if (in_array($imageType, $allowedImageType)) {
+                    if (file_exists($originalPath_corrective)) {
+                        // Hapus file lama
+                        unlink($originalPath_corrective);
+                    }
+                    // Upload file to server
+                    if (move_uploaded_file($tempPath, $originalPath_corrective)) {
+                        $data_hot_cold_test_list_detail['corrective_action_plan_image'] = $basename_corrective;
+                    } else {
+                        echo 'Corrective action plan image not uploaded! Try again.';
+                        exit();
+                    }
+                }
+            }
+        }
         if ($id == 0) {
             $data_box['created_by'] = $this->session->userdata('id');
             if ($this->model_hardness_test_list->hardness_test_list_detail_insert($data_box)) {

@@ -169,6 +169,10 @@
                     <td width="25%"><strong>Product Photo</strong></td>
                     <td width="75%"><input type="file" name="product_image" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
                 </tr>
+                <tr>
+                <td width="25%"><strong>Corrective Action Plan</strong></td>
+                <td width="75%"><input type="file" name="corrective_action_plan_image" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
+            </tr>
             </table>
         </form>
     </div>
