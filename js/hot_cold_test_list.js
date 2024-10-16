@@ -88,42 +88,58 @@ function hot_cold_test_list_edit() {
             resizable: true,
             top: 60,
             buttons: [{
-                    text: 'Save',
-                    iconCls: 'icon-save',
-                    handler: function () {
-                        hot_cold_test_list_save(row.image);
-                    }
-                }, {
-                    text: 'Close',
-                    iconCls: 'icon-remove',
-                    handler: function () {
-                        $('#hot_cold_test_list_detail_dialog').dialog('close');
-                    }
-                }],
+                text: 'Save',
+                iconCls: 'icon-save',
+                handler: function () {
+                    hot_cold_test_list_save(row.image);
+                }
+            }, {
+                text: 'Close',
+                iconCls: 'icon-remove',
+                handler: function () {
+                    $('#hot_cold_test_list_detail_dialog').dialog('close');
+                }
+            }],
             onLoad: function () {
+                // Remove any unnecessary elements
                 $('#hot_cold_test_list_detail_tr_component').remove();
-                $('#hot_cold_test_list_input_form').form('load', row);
-                var poDetails =  row.purchaseorder_item_id + '#' + row.po_client_no 
-                                + '#' + row.ebako_code + '#' + row.customer_code 
-                                + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
-                        
-                $('#hot_cold_test_list_po_item_id').combogrid('setValue', poDetails);
 
-                var vendorDetails =  row.vendor_id +"#" + row.vendor_name;
-                                
-                        
-                $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);
-                var material_temp = row.material_id.replace(/[({}]/g, "");
-                var material = material_temp.split(',');
-                $('#material_id').combobox('setValues', material);
+                // Set individual form values manually
+                $('#hot_cold_test_protocol_id').combobox('setValue', row.protocol_test_id);
+                $('#hot_cold_test_list_po_item_id').combogrid('setValue', row.purchaseorder_item_id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id); 
+                $('#drop_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name); 
+                $('#hot_cold_test_brand_id').val(row.brand);
+                $('#hot_cold_test_date_id').datebox('setValue', row.test_date);
+                $('#hot_cold_test_report_date_id').datebox('setValue', row.report_date);
+                $('#hot_cold_test_report_no_id').val(row.report_no);
+                $('#hot_cold_test_product_dimension_id').val(row.product_dimension);
+                $('#hot_cold_test_carton_dimension_id').val(row.carton_dimension);
+                $('#hot_cold_test_gross_weight_id').numberbox('setValue', row.gross_weight);
+                $('#hot_cold_test_nett_weight_id').numberbox('setValue', row.nett_weight);
+                $('#hot_cold_test_notes_id').val(row.notes);
+                
+                $('#hot_cold_test_condition_a_temp_id').val(row.condition_a_temp);
+                $('#hot_cold_test_condition_a_duration_id').val(row.condition_a_duration);
+                $('#hot_cold_test_room_temp_rest_a_duration_id').val(row.room_temp_rest_a_duration);
+                
+                $('#hot_cold_test_condition_b_temp_id').val(row.condition_b_temp);
+                $('#hot_cold_test_condition_b_duration_id').val(row.condition_b_duration);
+                $('#hot_cold_test_room_temp_rest_b_duration_id').val(row.room_temp_rest_b_duration);
+                
+                $('#hot_cold_test_cycles_id').val(row.cycles);
+
+                // Center the dialog
                 $(this).dialog('center');
             }
         });
+
+        // Define URL for saving data
         url = base_url + 'hot_cold_test_list/save/' + row.id;
     } else {
         $.messager.alert('No Product Selected', 'Please Select Product', 'warning');
     }
 }
+
 
 function hot_cold_test_list_update_price() {
     var row = $('#hot_cold_test_list').datagrid('getSelected');

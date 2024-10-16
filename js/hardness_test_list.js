@@ -113,9 +113,6 @@ function hardness_test_list_edit() {
                                 
                         
                 $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);
-                var material_temp = row.material_id.replace(/[({}]/g, "");
-                var material = material_temp.split(',');
-                $('#material_id').combobox('setValues', material);
                 $(this).dialog('center');
             }
         });

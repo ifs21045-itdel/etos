@@ -43,7 +43,7 @@
             <th data-options="field:'ck',checkbox:true"></th>
             <th field="evaluation" halign="center" width="250" sortable="true">Component</th>
             <th field="result_test_var" halign="center" sortable="true">Result</th>
-            <!-- <th field="method" halign="center" width="350" sortable="true">Method</th>
+            <!-- <th field="method" halign="center" width="350" sortable="true">Method</th> 
             <th field="notes" halign="center" width=250 sortable="true">Notes</th>
             <th field="var_type" halign="center" sortable="true">Data Type</th>
             <th field="mandatory" halign="center" sortable="true">Mandatory</th> -->

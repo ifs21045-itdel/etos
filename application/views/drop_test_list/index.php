@@ -31,8 +31,8 @@
                 ?>
                 <!--<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-redo" plain="true" id="drop_test_list_submit_id" onclick="drop_test_list_submit()">Submit</a>-->
 
-                <a href="#" id="drop_test_list_submit_id" class="easyui-menubutton" data-options="menu:'#dt_mm_2',iconCls:'icon-redo'">Submit</a>
-                <div id="dt_mm_2" style="width:150px;">
+                <a href="#" id="drop_test_list_submit_id" class="easyui-menubutton" data-options="menu:'#product_test_result_mm_2',iconCls:'icon-redo'">Submit</a>
+                <div id="product_test_result_mm_2" style="width:150px;">
                     <div style="background-color: greenyellow;"onclick="drop_test_list_submit('Passed')">PASSED</div>
                     <div  style="background-color: #f67c63;" onclick="drop_test_list_submit('Failed')">FAILED</div>
                     <div  style="background-color: #ffed55;" onclick="drop_test_list_submit('Car')">CAR</div>
@@ -67,7 +67,8 @@
                toolbar:'#drop_test_list_toolbar'">
             <thead>
                 <tr>
-                    <th field="protocol_name" halign="center">Drop Test Type</th>
+                corrective_action_plan_image
+                    <th field="protocol_name" halign="center">Product Test Type</th>
                     <th field="brand" halign="center">Brand</th>
                     <th field="po_client_no"  halign="center">Po Number</th>
                     <th field="vendor_name"  halign="center">Vendor</th>
@@ -81,7 +82,8 @@
                     <th field="report_date" halign="center">Report Date</th>
                     <th field="rating" halign="center">Rating/Status</th>
                     <th field="submited" halign="center">Submited</th>
-                    <th  field="product_image"  valign="center" align=center formatter="showimage_drop_test_product_image">Image 3</th>
+            <th  field="product_image"  valign="center" align=center formatter="showimage_product_test_product_image">Image Product</th>
+            <th  field="corrective_action_plan_image"  valign="center" align=center formatter="showimage_product_test_corrective_action_plan_image">Corrective Action Plan Image</th>
                 </tr>
             </thead>
         </table>
@@ -126,16 +128,29 @@
                 });
             });
 
-            function showimage_drop_test_product_image(value, row) {
+            function showimage_product_test_product_image(value, row) {
                 var idrow = row.id;
                 var temp = '';
-                //alert(row.product_test_list_id);
+                //alert(row.drop_test_list_id);
                 if (row.product_image == null)
                     var temp = '';
                 else {
                     //var temp=row.image_file;
-                    var temp = "<img src='files/droptest/" + row.id + "/" + row.product_image + "' width=90 height=90 onclick='product_test_list_variabel_test_view_detail(" + idrow + ")'>";
-                    //var temp = "<img src='files/producttest/" + row.product_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+                    temp = "<img src='files/droptest/" + row.id +"/" + row.product_image + "' width=90 height=90 onclick='drop_test_list_variabel_test_view_detail(" + idrow + ")'>";
+                    //var temp = "<img src='files/producttest/" + row.drop_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
+                }
+                return temp;
+            }
+            function showimage_product_test_corrective_action_plan_image(value, row) {
+                var idrow = row.id;
+                var temp = '';
+                //alert(row.drop_test_list_id);
+                if (row.corrective_action_plan_image == null)
+                    var temp = '';
+                else {
+                    //var temp=row.image_file;
+                    temp = "<img src='files/droptest/" + row.id +"/" + row.corrective_action_plan_image + "' width=90 height=90 onclick='drop_test_list_variabel_test_view_detail(" + idrow + ")'>";
+                    //var temp = "<img src='files/producttest/" + row.drop_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
                 }
                 return temp;
             }

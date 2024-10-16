@@ -183,10 +183,9 @@
             <!-- Summary -->
             <tr>
                 <tr><th colspan="7" style="background-color: #d0f0c0;">PRODUCT</th></tr>
-                <tr><td>Report Number</td><td colspan="6"><?php echo $hot_cold_test_list->report_date; ?></td></tr>
-                <tr><td>Testing Date</td><td colspan="6"><?php echo $hot_cold_test_list->test_date; ?></td></tr>
-                <tr><td>Report Date</td><td colspan="6"><?php echo $hot_cold_test_list->report_date; ?></td></tr>
-                <tr><td>Type of Report</td><td colspan="6"><?php echo $hot_cold_test_list->test_name; ?></td></tr>
+                <tr><td>Customer</td><td colspan="6"><?php echo $hot_cold_test_list->client_name; ?></td></tr>
+                <tr><td>Sample Code</td><td colspan="6"><?php echo $hot_cold_test_list->customer_code; ?></td></tr>
+                <tr><td>Vendor</td><td colspan="6"><?php echo $hot_cold_test_list->vendor_name; ?></td></tr>
             </tr>
             <!-- Baris Kosong untuk Spasi -->
              <!-- Tabel Kondisi Pengujian (Testing Conditions) -->
