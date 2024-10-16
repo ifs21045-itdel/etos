@@ -107,7 +107,7 @@ function hot_cold_test_list_edit() {
                 // Set individual form values manually
                 $('#hot_cold_test_protocol_id').combobox('setValue', row.protocol_test_id);
                 $('#hot_cold_test_list_po_item_id').combogrid('setValue', row.purchaseorder_item_id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id); 
-                $('#drop_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name); 
+                $('#hot_cold_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name); 
                 $('#hot_cold_test_brand_id').val(row.brand);
                 $('#hot_cold_test_date_id').datebox('setValue', row.test_date);
                 $('#hot_cold_test_report_date_id').datebox('setValue', row.report_date);

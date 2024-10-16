@@ -25,10 +25,10 @@
             <tr>
                 <td width="15%"><strong>PO Item</strong></td>
                 <td>
-                    <input type="text" name="purchaseorder_item_id" id="drop_test_list_po_item_id" required="true" class="easyui-combogrid" style="width:100%;"/>
+                    <input type="text" name="purchaseorder_item_id" id="hot_cold_test_list_po_item_id" required="true" class="easyui-combogrid" style="width:100%;"/>
                     <script>
-                        $('#drop_test_list_po_item_id').combogrid({
-                            url: base_url + 'drop_test_list/get_item_po',
+                        $('#hot_cold_test_list_po_item_id').combogrid({
+                            url: base_url + 'hot_cold_test_list/get_item_po',
                             idField: 'valfield',
                             textField: 'myfield',
                             mode: 'remote',
@@ -61,7 +61,7 @@
             <tr>
                 <td><strong>Brand</strong></td>
                 <td>
-                    <select name="brand" id="drop_test_brand">
+                    <select name="brand" id="hot_cold_test_brand">
                         <option value='Frontgate'>Frontgate</option>
                         <option value='Grandinroad'>Grandinroad</option>
                     </select>
@@ -70,9 +70,9 @@
             <tr>
                 <td><strong>Vendor</strong></td>
                 <td>
-                    <input type="text" name="vendor_id" id="drop_test_vendor_id" required="true" class="easyui-combogrid" style="width:100%;"/>
+                    <input type="text" name="vendor_id" id="hot_cold_test_vendor_id" required="true" class="easyui-combogrid" style="width:100%;"/>
                     <script>
-                        $('#drop_test_vendor_id').combogrid({
+                        $('#hot_cold_test_vendor_id').combogrid({
                             url: base_url + 'vendor/get',
                             idField: 'dt_vendor_val',
                             textField: 'dt_vendor_text',

@@ -72,7 +72,7 @@
                     ?>
                 </td>
                 <td colspan="5" width="33%" style="height: 150px; vertical-align: middle; text-align: center;">
-                    <h3 style="margin: 0; font-size: 24px;">IN-HOUSE TEST REPORT</h3>
+                    <h3 style="margin: 0; font-size: 24px;">TEST REPORT</h3>
                 </td>
                 <td align='center' width="34%" style="height: 150px; vertical-align: middle; text-align: center;">
                     <h3 style="margin: 0; font-size: 24px;">Quality Assurance Department</h3>
@@ -184,7 +184,7 @@
             <tr>
                 <tr><th colspan="7" style="background-color: #d0f0c0;">PRODUCT</th></tr>
                 <tr><td>Customer</td><td colspan="6"><?php echo $hot_cold_test_list->client_name; ?></td></tr>
-                <tr><td>Sample Code</td><td colspan="6"><?php echo $hot_cold_test_list->customer_code; ?></td></tr>
+                <tr><td>Sample Code</td><td colspan="6"><?php echo $hot_cold_test_list->ebako_code; ?></td></tr>
                 <tr><td>Vendor</td><td colspan="6"><?php echo $hot_cold_test_list->vendor_name; ?></td></tr>
             </tr>
             <!-- Baris Kosong untuk Spasi -->
