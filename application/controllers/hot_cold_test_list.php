@@ -30,27 +30,35 @@ class hot_cold_test_list extends CI_Controller{
         $poitem = explode("#", $this->input->post('purchaseorder_item_id'));
         $vendor = explode("#", $this->input->post('vendor_id'));
         $data_hot_cold_test_list_detail = array(
-            "protocol_test_id" => $this->input->post('protocol_test_id'),
-            "purchaseorder_item_id" => $poitem[0],
+            "protocol_test_id" => $this->input->post('protocol_test_id') ?: NULL,
+            "purchaseorder_item_id" => $poitem[0] ?: NULL, // Pastikan ini integer
             "po_client_no" => $poitem[1],
             "ebako_code" => $poitem[2],
             "customer_code" => $poitem[3],
-            "client_id" => $poitem[4],
+            "client_id" => $poitem[4] ?: NULL, // Pastikan ini integer
             "client_name" => $poitem[5],
-            "vendor_id" => $vendor[0],
+            "vendor_id" => $vendor[0] ?: NULL, // Pastikan ini integer
             "vendor_name" => $vendor[2],
-            "product_id" => $poitem[6],
+            "product_id" => $poitem[6] ?: NULL, // Pastikan ini integer
             "submited" => 'f',
             "test_date" => $this->input->post('test_date') ?: NULL,
             "carton_dimension" => $this->input->post('carton_dimension'),
-            "gross_weight" => $this->input->post('gross_weight') ?: 0,
-            "nett_weight" => $this->input->post('nett_weight') ?: 0,
+            "gross_weight" => $this->input->post('gross_weight') ?: 0, // Default to 0 jika kosong
+            "nett_weight" => $this->input->post('nett_weight') ?: 0, // Default to 0 jika kosong
             "brand" => $this->input->post('brand'),
             "report_date" => $this->input->post('report_date') ?: NULL,
             "product_dimension" => $this->input->post('product_dimension'),
             "report_no" => $this->input->post('report_no'),
-            "notes" => $this->input->post('notes')
+            "notes" => $this->input->post('notes'),
+            "condition_a_temp" => $this->input->post('condition_a_temp') ?: NULL,
+            "condition_a_duration" => $this->input->post('condition_a_duration') ?: NULL,
+            "room_temp_rest_a_duration" => $this->input->post('room_temp_rest_a_duration') ?: NULL,
+            "condition_b_temp" => $this->input->post('condition_b_temp') ?: NULL,
+            "condition_b_duration" => $this->input->post('condition_b_duration') ?: NULL,
+            "room_temp_rest_b_duration" => $this->input->post('room_temp_rest_b_duration') ?: NULL,
+            "cycles" => $this->input->post('cycles') ?: NULL, // Pastikan ini integer
         );
+        
 //        print_r($data_hot_cold_test_list_detail);
         $nametemp_product = 'product_image';
         $id_dir=$id;
@@ -74,7 +82,7 @@ class hot_cold_test_list extends CI_Controller{
                 $imageName = $_FILES[$nametemp_product]['name'];
                 $tempPath = $_FILES[$nametemp_product]["tmp_name"];
                 $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
-                $basename = 'product_image-' . $id_dir . '-' . $poitem[6] . '.' . $imageType; // 5dab1961e93a7_1571494241.jpg
+                $basename = 'product_image-' . $id_dir. '.' . $imageType; // 5dab1961e93a7_1571494241.jpg
                 $originalPath = $directory . '/' . $basename;
 
                 if (in_array($imageType, $allowedImageType)) {
@@ -87,6 +95,41 @@ class hot_cold_test_list extends CI_Controller{
                         $data_hot_cold_test_list_detail['product_image'] = $basename;
                     } else {
                         echo 'image 1 Not uploaded ! try again';
+                        exit();
+                    }
+                }
+            }
+        }
+        $nametemp_corrective_action_plan = 'corrective_action_plan_image';
+        if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+            $directory_corrective = 'files/hotcoldtest/' . $id_dir;
+    
+            if (!file_exists($directory_corrective)) {
+                $oldumask = umask(0);
+                mkdir($directory_corrective, 0777, true); // true untuk membuat folder secara rekursif jika tidak ada
+                umask($oldumask);
+            }
+    
+            $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
+            $uploadTo = $directory_corrective;
+    
+            if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+                $imageName = $_FILES[$nametemp_corrective_action_plan]['name'];
+                $tempPath = $_FILES[$nametemp_corrective_action_plan]["tmp_name"];
+                $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+                $basename_corrective = 'corrective_action_plan-' . $id_dir .'.' . $imageType;
+                $originalPath_corrective = $directory_corrective . '/' . $basename_corrective;
+    
+                if (in_array($imageType, $allowedImageType)) {
+                    if (file_exists($originalPath_corrective)) {
+                        // Hapus file lama
+                        unlink($originalPath_corrective);
+                    }
+                    // Upload file to server
+                    if (move_uploaded_file($tempPath, $originalPath_corrective)) {
+                        $data_hot_cold_test_list_detail['corrective_action_plan_image'] = $basename_corrective;
+                    } else {
+                        echo 'Corrective action plan image not uploaded! Try again.';
                         exit();
                     }
                 }
@@ -154,18 +197,17 @@ class hot_cold_test_list extends CI_Controller{
 
     function hot_cold_test_list_detail_save($hot_cold_test_list_id, $id) {
         $data_box = array(
-            'hot_cold_test_list_id' => $hot_cold_test_list_id,
+            'hot_cold_test_list_id' => $hot_cold_test_list_id,  
             'evaluation' => $this->input->post('evaluation'),
-            'method' => $this->input->post('method'),
-            'notes' => $this->input->post('notes'),
+            // 'method' => $this->input->post('method'),
+            // 'notes' => $this->input->post('notes'),
             'result_test_var' => $this->input->post('result_test_var'),
             'mandatory' => 't',
-            'var_type' => $this->input->post('var_type')
+            'var_type' => 'Photo'
         );
         $nametemp = 'image_file';
         $nametemp2 = 'image2_file';
-        $nametemp3 = 'image3_file';
-        if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name']) || isset($_FILES[$nametemp3]['name'])) {
+        if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name'])) {
             $directory = 'files/hotcoldtest/' . $hot_cold_test_list_id;
 
             if (!file_exists($directory)) {
@@ -213,27 +255,6 @@ class hot_cold_test_list extends CI_Controller{
                     // Upload file to server 
                     if (move_uploaded_file($tempPath2, $originalPath2)) {
                         $data_box['image2_file'] = $basename2;
-                    } else {
-                        echo 'image 1 Not uploaded ! try again';
-                        exit();
-                    }
-                }
-            }
-            if (isset($_FILES[$nametemp3]['name'])) {
-                $imageName3 = $_FILES[$nametemp3]['name'];
-                $tempPath3 = $_FILES[$nametemp3]["tmp_name"];
-                $imageType3 = pathinfo($imageName3, PATHINFO_EXTENSION);
-                $basename3 = 'pt-' . $id . '-vt-' . $hot_cold_test_list_id . '-image-3.' . $imageType; // 5dab1961e93a7_1571494241.jpg
-                $originalPath3 = $directory . '/' . $basename3;
-
-                if (in_array($imageType3, $allowedImageType)) {
-                    if (file_exists($originalPath3)) {
-                        // Hapus file lama
-                        unlink($originalPath3);
-                    }
-                    // Upload file to server 
-                    if (move_uploaded_file($tempPath3, $originalPath3)) {
-                        $data_box['image3_file'] = $basename3;
                     } else {
                         echo 'image 1 Not uploaded ! try again';
                         exit();
@@ -302,8 +323,7 @@ class hot_cold_test_list extends CI_Controller{
         );
         $nametemp = 'image_file';
         $nametemp2 = 'image2_file';
-        $nametemp3 = 'image3_file';
-        if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name']) || isset($_FILES[$nametemp3]['name'])) {
+        if (isset($_FILES[$nametemp]['name']) || isset($_FILES[$nametemp2]['name'])) {
             $directory = 'files/hotcoldtest/' . $hot_cold_test_list_id;
 
             if (!file_exists($directory)) {
@@ -352,27 +372,6 @@ class hot_cold_test_list extends CI_Controller{
                     // Upload file to server 
                     if (move_uploaded_file($tempPath2, $originalPath2)) {
                         $data_box['image2_file'] = $basename2;
-                    } else {
-                        echo 'image 1 Not uploaded ! try again';
-                        exit();
-                    }
-                }
-            }
-            if (isset($_FILES[$nametemp3]['name'])) {
-                $imageName3 = $_FILES[$nametemp3]['name'];
-                $tempPath3 = $_FILES[$nametemp3]["tmp_name"];
-                $imageType3 = pathinfo($imageName3, PATHINFO_EXTENSION);
-                $basename3 = 'pt-' . $id . '-vt-' . $hot_cold_test_list_id . '-image-3.' . $imageType; // 5dab1961e93a7_1571494241.jpg
-                $originalPath3 = $directory . '/' . $basename3;
-
-                if (in_array($imageType3, $allowedImageType)) {
-                    if (file_exists($originalPath3)) {
-                        // Hapus file lama
-                        unlink($originalPath3);
-                    }
-                    // Upload file to server 
-                    if (move_uploaded_file($tempPath3, $originalPath3)) {
-                        $data_box['image3_file'] = $basename3;
                     } else {
                         echo 'image 1 Not uploaded ! try again';
                         exit();

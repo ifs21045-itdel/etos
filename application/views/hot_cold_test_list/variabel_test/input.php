@@ -2,12 +2,12 @@
     <form id="hot_cold_test_list_hot_cold_test_list_detail_input" method="post" novalidate enctype="multipart/form-data">
         <table width="100%" border="0" class="table_form">
             <tr>
-                <td width="35%"><strong>Evaluation</strong></td>
+                <td width="35%"><strong>Component</strong></td>
                 <td width="75%">
                     <textarea name="evaluation" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td width="35%"><strong>Method</strong></td>
                 <td width="75%">
                     <textarea name="method" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
@@ -27,15 +27,15 @@
                 <td width="75%">
                     <textarea name="notes" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td><strong>Result</strong></td>
                 <td>
-                    <select name="result_test_var" required="ture">
+                    <select name="result_test_var" required="true" id="result_test_var">
                         <option value=""></option>
                         <option value="Passed">Passed</option>
-                        <option value="Failed">Failed </option>
-                        <option value="Car">Car </option>
+                        <option value="Failed">Failed</option>
+                        <option value="Car">Car</option>
                     </select>
                 </td>
             </tr>
@@ -52,12 +52,8 @@
                                 <td width="75%"><input type="file" name="image_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
                             </tr>
                             <tr>
-                                <td width="25%"><strong>Photo 3</strong></td>
+                                <td width="25%"><strong>Photo 2</strong></td>
                                 <td width="75%"><input type="file" name="image2_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
-                            </tr>
-                            <tr>
-                                <td width="25%"><strong>Photo 4</strong></td>
-                                <td width="75%"><input type="file" name="image3_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
                             </tr>
 <!--                            <tr>
                                 <td width="25%"><strong>Photo 2</strong></td>

@@ -119,8 +119,8 @@
                                         data2 = {total: data2.length, rows: data2};
                                     }
                                     $.map(data2.rows, function (row) {
-                                        row.dt_vendor_text = 'Vendor ID:' + row.id + ':Vendor Code:' + row.code + ' Vendor Name:' + row.name;
-                                        row.dt_vendor_val = row.id + '#' + row.code + '#' + row.name;
+                                        row.dt_vendor_text = 'Vendor ID:' + row.id + ':Vendor Name:' + row.name;
+                                        row.dt_vendor_val = row.id + '#' + row.name;
                                     });
                                     return data2;
                                 },

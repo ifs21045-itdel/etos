@@ -38,7 +38,7 @@ class hardness_test_list extends CI_Controller{
             "client_id" => $poitem[4],
             "client_name" => $poitem[5],
             "vendor_id" => $vendor[0],
-            "vendor_name" => $vendor[2],
+            "vendor_name" => $vendor[1],
             "product_id" => $poitem[6],
             "submited" => 'f',
             "test_date" => $this->input->post('test_date') ?: NULL,
