@@ -103,6 +103,16 @@ function hot_cold_test_list_edit() {
             onLoad: function () {
                 $('#hot_cold_test_list_detail_tr_component').remove();
                 $('#hot_cold_test_list_input_form').form('load', row);
+                var poDetails =  row.purchaseorder_item_id + '#' + row.po_client_no 
+                                + '#' + row.ebako_code + '#' + row.customer_code 
+                                + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
+                        
+                $('#hot_cold_test_list_po_item_id').combogrid('setValue', poDetails);
+
+                var vendorDetails =  row.vendor_id +"#" + row.vendor_name;
+                                
+                        
+                $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);
                 var material_temp = row.material_id.replace(/[({}]/g, "");
                 var material = material_temp.split(',');
                 $('#material_id').combobox('setValues', material);
@@ -465,7 +475,7 @@ function hot_cold_test_list_submit(result_status) {
     var row_hot_cold_test_list_detail = $('#hot_cold_test_list_hot_cold_test_list_detail').datagrid('getRows');
     //alert(arr.length); 
     if ((row !== null) && (row_hot_cold_test_list_detail.length>0)){
-        $.messager.confirm('Submit Submited', 'After submited you can not change the droptest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
+        $.messager.confirm('Submit Submited', 'After submited you can not change the hardnesstest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
             if (r) {
                 $.post(base_url + 'hot_cold_test_list/submit', {id: row.id,result_s:result_status}, function (result) {
                     if (result.success) {
@@ -481,7 +491,7 @@ function hot_cold_test_list_submit(result_status) {
             }
         });
     } else {
-        $.messager.alert('Submitted Drop Test  Warning', 'No Drop Test or no item to be submitted', 'warning');
+        $.messager.alert('Submitted hardness Test  Warning', 'No hardness Test or no item to be submitted', 'warning');
     }
 }
 function print_hot_cold_test_list(type,view_type) {

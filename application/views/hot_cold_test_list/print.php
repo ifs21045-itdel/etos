@@ -100,7 +100,7 @@
                 <td width="48%">
                     <table class="table-border-luar">
                         <tr>
-                            <th colspan="2" style="text-align: center;">RESULT</th>
+                            <th colspan="2" style="text-align: center; background-color: #d0f0c0;">RESULT</th>
                         </tr>
                         <tr>
                             <td>PASS</td>
@@ -145,7 +145,7 @@
             <tr>
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                        <tr><th colspan="6" style="text-align: center;">Sample Picture</th></tr>
+                        <tr><th colspan="6" style="text-align: center; background-color: #d0f0c0;">Sample Picture</th></tr>
                         <tr style="height: 384px;">
                             <td align="center" style="vertical-align: middle;" colspan="6">
                                 <?php if (trim($hot_cold_test_list->product_image) != "") {
@@ -161,7 +161,7 @@
                 <td width="1%" colspan></td>
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                        <tr><th colspan="6" style="text-align: center;">Corrective Action Item</th></tr>
+                        <tr><th colspan="6" style="text-align: center; background-color: #d0f0c0;" >Corrective Action Item</th></tr>
                         <tr style="height: 384px;">
                             <td align="center" style="vertical-align: middle;" colspan="6">
                                 <?php if (trim($hot_cold_test_list->product_image) != "") {
@@ -182,7 +182,7 @@
             </tr>
             <!-- Summary -->
             <tr>
-                <tr><th colspan="7">PRODUCT</th></tr>
+                <tr><th colspan="7" style="background-color: #d0f0c0;">PRODUCT</th></tr>
                 <tr><td>Report Number</td><td colspan="6"><?php echo $hot_cold_test_list->report_date; ?></td></tr>
                 <tr><td>Testing Date</td><td colspan="6"><?php echo $hot_cold_test_list->test_date; ?></td></tr>
                 <tr><td>Report Date</td><td colspan="6"><?php echo $hot_cold_test_list->report_date; ?></td></tr>
@@ -279,55 +279,55 @@
             </tr>
             <!-- Rincian Test Non-Deskripsi -->
             <!-- Test Result Summary Table -->
-<tr class="no-border">
-    <td colspan="7" style="height: 50px;"></td> <!-- Spasi -->
-</tr>
-<tr>
-    <td colspan="7">
-        <table class="table-border-luar" style="width: 100%; text-align: center;">
-            <tr>
-                <th colspan="7" style="background-color: #d0f0c0; text-align: center;">TEST RESULT SUMMARY</th>
+            <tr class="no-border">
+                <td colspan="7" style="height: 50px;"></td> <!-- Spasi -->
             </tr>
+            <tr>
+                <td colspan="7">
+                    <table class="table-border-luar" style="width: 100%; text-align: center;">
+                        <tr>
+                            <th colspan="7" style="background-color: #d0f0c0; text-align: center;">TEST RESULT SUMMARY</th>
+                        </tr>
 
-            <!-- Looping untuk setiap hasil pengujian -->
-            <?php foreach ($hot_cold_test_list_detail as $result) { ?>
-                <tr>
-                    <!-- Gambar Kiri dari $result->image_file -->
-                    <td colspan="3" style="text-align: center;">
-                    <?php
-                                    if (trim($result->image_file) != "") {
-                                        $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image_file;
-                                        $width = 3 * 60;  
-                                        $height = 4 * 60; 
-                                        echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
-                                        echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
-                                    }
-                                    ?>
-                    </td>
+                        <!-- Looping untuk setiap hasil pengujian -->
+                        <?php foreach ($hot_cold_test_list_detail as $result) { ?>
+                            <tr>
+                                <!-- Gambar Kiri dari $result->image_file -->
+                                <td colspan="3" style="text-align: center;">
+                                <?php
+                                                if (trim($result->image_file) != "") {
+                                                    $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image_file;
+                                                    $width = 3 * 60;  
+                                                    $height = 4 * 60; 
+                                                    echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                                    echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
+                                                }
+                                                ?>
+                                </td>
 
-                    <!-- Gambar Kanan dari $result->image2_file -->
-                    <td colspan="3" style="text-align: center;">
-                    <?php
-                                    if (trim($result->image_file) != "") {
-                                        $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image2_file;
-                                        $width = 3 * 60;  
-                                        $height = 4 * 60; 
-                                        echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
-                                        echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
-                                    }
-                                    ?>
-                    </td>
-                </tr>
+                                <!-- Gambar Kanan dari $result->image2_file -->
+                                <td colspan="3" style="text-align: center;">
+                                <?php
+                                                if (trim($result->image_file) != "") {
+                                                    $image = $_SERVER["HTTP_REFERER"] . 'files/hotcoldtest/' . $result->hot_cold_test_list_id . "/" . $result->image2_file;
+                                                    $width = 3 * 60;  
+                                                    $height = 4 * 60; 
+                                                    echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                                    echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
+                                                }
+                                                ?>
+                                </td>
+                            </tr>
 
-                <!-- Baris untuk Nama Material dan Status Hasil Pengujian -->
-                <tr>
-                    <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->evaluation; ?></td>
-                    <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->result_test_var; ?></td>
-                </tr>
-            <?php } ?>
-        </table>
-    </td>
-</tr>
+                            <!-- Baris untuk Nama Material dan Status Hasil Pengujian -->
+                            <tr>
+                                <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->evaluation; ?></td>
+                                <td colspan="3" style="text-align: center; font-weight: bold;"><?php echo $result->result_test_var; ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </td>
+            </tr>
 
             
         </tbody>
