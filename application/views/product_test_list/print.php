@@ -52,20 +52,24 @@
 <body>
     <table class="table-border-luar" align="center">
         <thead>
-            <tr>
-                <td align='center' width="34%" style="vertical-align: middle;">
-                    <?php
-                    $image = $_SERVER["HTTP_REFERER"] . 'files/logo.png';
-                    echo "<img src='" . $image . "' class='logo'>";
-                    ?>
-                </td>
-                <td colspan="5" class="header-center header-spacing" width="33%" style="height: 150px; vertical-align: middle; text-align: center;">
-                    <h3 style="margin: 0;">IN-HOUSE TEST REPORT</h3>
-                </td>
-                <td align='center' width="34%" style="height: 150px; vertical-align: middle; text-align: center;">
-                    <h3 style="margin: 0;">Quality Assurance Department</h3>
-                </td>
-            </tr>
+<tr>
+    <td align="center" width="34%" style="vertical-align: middle; height: 150px; text-align: center;">
+        <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+            <?php
+            $image = $_SERVER["HTTP_REFERER"] . 'files/logo.png';
+            echo "<img src='" . $image . "' class='logo' style='max-height: 100%; max-width: 100%;'>";
+            ?>
+        </div>
+    </td>
+    <td colspan="5" class="header-center header-spacing" width="33%" 
+        style="height: 150px; vertical-align: middle; text-align: center;">
+        <h3 style="margin: 0;">IN-HOUSE TEST REPORT</h3>
+    </td>
+    <td align="center" width="34%" style="height: 150px; vertical-align: middle; text-align: center;">
+        <h3 style="margin: 0;">Quality Assurance Department</h3>
+    </td>
+</tr>
+
         </thead>
 
         <tbody>
