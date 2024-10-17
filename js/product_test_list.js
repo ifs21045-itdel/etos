@@ -88,34 +88,30 @@ function product_test_list_edit() {
             resizable: true,
             top: 60,
             buttons: [{
-                    text: 'Save',
-                    iconCls: 'icon-save',
-                    handler: function () {
-                        product_test_list_save(row.image);
-                    }
-                }, {
-                    text: 'Close',
-                    iconCls: 'icon-remove',
-                    handler: function () {
-                        $('#product_test_list_detail_dialog').dialog('close');
-                    }
-                }],
+                text: 'Save',
+                iconCls: 'icon-save',
+                handler: function () {
+                    product_test_list_save(row.image);
+                }
+            }, {
+                text: 'Close',
+                iconCls: 'icon-remove',
+                handler: function () {
+                    $('#product_test_list_detail_dialog').dialog('close');
+                }
+            }],
             onLoad: function () {
-                $('#product_test_list_detail_tr_component').remove();
-                $('#product_test_list_input_form').form('load', row);
-                var poDetails =  row.purchaseorder_item_id + '#' + row.po_client_no 
-                                + '#' + row.ebako_code + '#' + row.customer_code 
-                                + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
-                        
-                $('#product_test_list_po_item_id').combogrid('setValue', poDetails);
-
-                var vendorDetails =  row.vendor_id + '#' + row.vendor_code + "#" + row.vendor_name;
-                                
-                        
-                $('#product_test_vendor_id').combogrid('setValue', vendorDetails);
-                var material_temp = row.material_id.replace(/[({}]/g, "");
-                var material = material_temp.split(',');
-                $('#material_id').combobox('setValues', material);
+                $('#product_test_protocol_id').combobox('setValue', row.protocol_test_id);  
+                $('#product_test_list_po_item_id').combogrid('setValue', row.purchaseorder_item_id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id); 
+                $('#product_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name);  
+                $('#product_test_date').datebox('setValue', row.test_date);  
+                $('#product_test_report_date').datebox('setValue', row.report_date);  
+                $('#product_test_report_no').val(row.report_no);  
+                $('#product_test_product_dimension').val(row.product_dimension);  
+                $('#product_test_carton_dimension').val(row.carton_dimension);  
+                $('#product_test_gross_weight').numberbox('setValue', row.gross_weight);  
+                $('#product_test_nett_weight').numberbox('setValue', row.nett_weight);  
+                $('#product_test_notes').val(row.notes);  
                 $(this).dialog('center');
             }
         });

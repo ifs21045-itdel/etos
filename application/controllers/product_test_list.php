@@ -38,7 +38,7 @@ class product_test_list extends CI_Controller {
             "client_id" => $poitem[4],
             "client_name" => $poitem[5],
             "vendor_id" => $vendor[0],
-            "vendor_name" => $vendor[2],
+            "vendor_name" => $vendor[1],
             "product_id" => $poitem[6],
             "submited" => 'f',
             "test_date" => $this->input->post('test_date') ?: NULL,
@@ -52,66 +52,101 @@ class product_test_list extends CI_Controller {
             "notes" => $this->input->post('notes')
         );
 //        print_r($data_product_test_list_detail);
-        $nametemp_product = 'product_image';
-        $id_dir=$id;
-        if($id==0){
-            
-            $maxid = $this->model_product_test_list->get_product_test_list_max_id();
-            $id_dir = 1 + $maxid[0]->max_id;
-        }
-        if (isset($_FILES[$nametemp_product]['name'])) {
-            $directory = 'files/producttest/' . $id_dir;
-
-            if (!file_exists($directory)) {
-                $oldumask = umask(0);
-                mkdir($directory, 0777); // or even 01777 so you get the sticky bit set
-                umask($oldumask);
+            $nametemp_product = 'product_image';
+            $id_dir=$id;
+            if($id==0){
+                
+                $maxid = $this->model_product_test_list->get_product_test_list_max_id();
+                $id_dir = 1 + $maxid[0]->max_id;
             }
-            $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
-            $uploadTo = $directory;
-
             if (isset($_FILES[$nametemp_product]['name'])) {
-                $imageName = $_FILES[$nametemp_product]['name'];
-                $tempPath = $_FILES[$nametemp_product]["tmp_name"];
-                $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
-                $basename = 'product_image-' . $id_dir . '-' . $poitem[6] . '.' . $imageType; // 5dab1961e93a7_1571494241.jpg
-                $originalPath = $directory . '/' . $basename;
+                $directory = 'files/producttest/' . $id_dir;
 
-                if (in_array($imageType, $allowedImageType)) {
-                    if (file_exists($originalPath)) {
-                        // Hapus file lama
-                        unlink($originalPath);
-                    }
-                    // Upload file to server 
-                    if (move_uploaded_file($tempPath, $originalPath)) {
-                        $data_product_test_list_detail['product_image'] = $basename;
-                    } else {
-                        echo 'image 1 Not uploaded ! try again';
-                        exit();
+                if (!file_exists($directory)) {
+                    $oldumask = umask(0);
+                    mkdir($directory, 0777); // or even 01777 so you get the sticky bit set
+                    umask($oldumask);
+                }
+                $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
+                $uploadTo = $directory;
+
+                if (isset($_FILES[$nametemp_product]['name'])) {
+                    $imageName = $_FILES[$nametemp_product]['name'];
+                    $tempPath = $_FILES[$nametemp_product]["tmp_name"];
+                    $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+                    $basename = 'product_image-' . $id_dir. '.' . $imageType; // 5dab1961e93a7_1571494241.jpg
+                    $originalPath = $directory . '/' . $basename;
+
+                    if (in_array($imageType, $allowedImageType)) {
+                        if (file_exists($originalPath)) {
+                            // Hapus file lama
+                            unlink($originalPath);
+                        }
+                        // Upload file to server 
+                        if (move_uploaded_file($tempPath, $originalPath)) {
+                            $data_product_test_list_detail['product_image'] = $basename;
+                        } else {
+                            echo 'image 1 Not uploaded ! try again';
+                            exit();
+                        }
                     }
                 }
             }
-        }
-        if ($id == 0) {
-            $data_product_test_list_detail['created_by'] = $this->session->userdata('id');
-            // var_dump($data_product_test_list_detail);
-            //exit;
-            if ($this->model_product_test_list->insert($data_product_test_list_detail)) {
-                echo json_encode(array('success' => true));
-            } else {
-                echo json_encode(array('msg' => $this->db->_error_message()));
-            }
-        } else {
+            $nametemp_corrective_action_plan = 'corrective_action_plan_image';
+            if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+                $directory_corrective = 'files/producttest/' . $id_dir;
 
-            $data_product_test_list_detail['updated_by'] = $this->session->userdata('id');
-            $data_product_test_list_detail['updated_at'] = "now()";
-            if ($this->model_product_test_list->update($data_product_test_list_detail, array("id" => $id))) {
-//                if ($last_file_name != 'no-image.jpg') {
-//                    //@unlink('./files/product_test_list_image/' . $last_file_name);
-//                }
-                echo json_encode(array('success' => true));
+                if (!file_exists($directory_corrective)) {
+                    $oldumask = umask(0);
+                    mkdir($directory_corrective, 0777, true); // true untuk membuat folder secara rekursif jika tidak ada
+                    umask($oldumask);
+                }
+
+                $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
+                $uploadTo = $directory_corrective;
+
+                if (isset($_FILES[$nametemp_corrective_action_plan]['name'])) {
+                    $imageName = $_FILES[$nametemp_corrective_action_plan]['name'];
+                    $tempPath = $_FILES[$nametemp_corrective_action_plan]["tmp_name"];
+                    $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
+                    $basename_corrective = 'corrective_action_plan-' . $id_dir .'.' . $imageType;
+                    $originalPath_corrective = $directory_corrective . '/' . $basename_corrective;
+
+                    if (in_array($imageType, $allowedImageType)) {
+                        if (file_exists($originalPath_corrective)) {
+                            // Hapus file lama
+                            unlink($originalPath_corrective);
+                        }
+                        // Upload file to server
+                        if (move_uploaded_file($tempPath, $originalPath_corrective)) {
+                            $data_product_test_list_detail['corrective_action_plan_image'] = $basename_corrective;
+                        } else {
+                            echo 'Corrective action plan image not uploaded! Try again.';
+                            exit();
+                        }
+                    }
+                }
+            }
+            if ($id == 0) {
+                $data_product_test_list_detail['created_by'] = $this->session->userdata('id');
+                // var_dump($data_product_test_list_detail);
+                //exit;
+                if ($this->model_product_test_list->insert($data_product_test_list_detail)) {
+                    echo json_encode(array('success' => true));
+                } else {
+                    echo json_encode(array('msg' => $this->db->_error_message()));
+                }
             } else {
-                echo json_encode(array('msg' => $this->db->_error_message()));
+
+                $data_product_test_list_detail['updated_by'] = $this->session->userdata('id');
+                $data_product_test_list_detail['updated_at'] = "now()";
+                if ($this->model_product_test_list->update($data_product_test_list_detail, array("id" => $id))) {
+            //                if ($last_file_name != 'no-image.jpg') {
+            //                    //@unlink('./files/product_test_list_image/' . $last_file_name);
+            //                }
+                    echo json_encode(array('success' => true));
+            } else {
+            echo json_encode(array('msg' => $this->db->_error_message()));
             }
         }
     }

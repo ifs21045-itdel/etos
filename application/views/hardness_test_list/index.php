@@ -51,7 +51,7 @@
                border:true,
                singleSelect:true,
                fit:true,
-               title:'PRODUCT TEST LIST',
+               title:'HARDNESS TEST LIST',
                autoRowHeight:false,
                rownumbers:true,
                fitColumns:false,

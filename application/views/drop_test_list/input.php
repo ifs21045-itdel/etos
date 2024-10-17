@@ -68,38 +68,43 @@
                 </td>
             </tr>
             <tr>
-                <td><strong>Vendor</strong></td>
-                <td>
-                    <input type="text" name="vendor_id" id="drop_test_vendor_id" required="true" class="easyui-combogrid" style="width:100%;"/>
-                    <script>
-                        $('#drop_test_vendor_id').combogrid({
-                            url: base_url + 'vendor/get',
-                            idField: 'dt_vendor_val',
-                            textField: 'dt_vendor_text',
-                            mode: 'remote',
-                            columns: [[
-                                {field: 'id', title: 'ID', width: 40},
-                                {field: 'code', title: 'Vendor Code', align: 'left', width: 120},
-                                {field: 'name', title: 'Vendor Name', align: 'left', width: 120}
-                            ]],
-                            onBeforeLoad: function (param) {
-                                param.page = 1;
-                                param.rows = 30;
-                            },
-                            loadFilter: function (data2) {
-                                if ($.isArray(data2)) {
-                                    data2 = {total: data2.length, rows: data2};
+                    <td><strong>Vendor</strong></td>
+                    <td>
+                        <input type="text" name="vendor_id" required="true" id="drop_test_vendor_id" class="easyui-combogrid" style="width:100%;"/>
+                        <script>
+
+                            $('#drop_test_vendor_id').combogrid({
+                                url: base_url + 'vendor/get',
+                                idField: 'dt_vendor_val',
+                                textField: 'dt_vendor_text',
+                                mode: 'remote',
+                                columns: [[
+                                        {field: 'id', title: 'ID', width: 40},
+                                        {field: 'code', title: 'Vendor Code', align: 'left', width: 120},
+                                        {field: 'name', title: 'Vendor Name', align: 'left', width: 120},
+                                    ]],
+                                onBeforeLoad: function (param) {
+                                    param.page = 1;
+                                    param.rows = 30;
+                                },
+                                loadFilter: function (data2) {
+                                    // return data.rows;
+                                    if ($.isArray(data2)) {
+                                        data2 = {total: data2.length, rows: data2};
+                                    }
+                                    $.map(data2.rows, function (row) {
+                                        row.dt_vendor_text = 'Vendor ID:' + row.id + ':Vendor Name:' + row.name;
+                                        row.dt_vendor_val = row.id + '#' + row.name;
+                                    });
+                                    return data2;
+                                },
+                                onChange: function (data2) {
+                                    //alert(data);
                                 }
-                                $.map(data2.rows, function (row) {
-                                    row.dt_vendor_text = 'Vendor ID:' + row.id + ' Vendor Name:' + row.name;
-                                    row.dt_vendor_val = row.id +  '#' + row.name;
-                                });
-                                return data2;
-                            }
-                        });
-                    </script>
-                </td>
-            </tr>
+                            });
+                        </script>
+                    </td>
+                </tr> 
             <tr>
                 <td><strong>Test Date</strong></td>
                 <td><input id="drop_test_date" name="test_date" class="easyui-datebox" style="width: 50%;" data-options="formatter:myformatter,parser:myparser"></td>

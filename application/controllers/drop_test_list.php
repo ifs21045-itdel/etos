@@ -149,7 +149,7 @@ class drop_test_list extends CI_Controller {
                 echo json_encode(array('msg' => $this->db->_error_message()));
             }
         }
-        }
+    }
 
 
     function update_status() {
