@@ -479,3 +479,34 @@ WITH (
 );
 ALTER TABLE public.hardness_test_list_detail
   OWNER TO postgres;
+
+
+
+--script add variable test pada print mark test
+INSERT INTO public.variabel_test (protocol_test_id, evaluation, method, description, client_id, created_by, created_at, updated_by, updated_at, mandatory, var_type)
+VALUES
+  (17, 
+   'Place a soft cloth over the surface of the sample then place foam sheet on it. Apply a load of 1.8 kg, 1.1 kg, and 4.56 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C.',
+   'Place a soft cloth over the surface of the sample than place foam sheet on it. Apply a load of 1.8 kg, 1.1 kg, and 4.56 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C. ', 
+   'Place a soft cloth over the surface of the sample then place foam sheet on it. Apply a load of 1.8 kg, 1.1 kg, and 4.56 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C.',
+   NULL, 
+   NULL, 
+   now(), 
+   NULL, 
+   NULL, 
+   true, 
+   'Photo'),
+  
+  (17, 
+   'Place a soft cloth over the surface of the sample then place foam sheet on it. Apply a load of 2.4 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C.',
+   'Place a soft cloth over the surface of the sample than place foam sheet on it. Apply a load of 2.4 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C. ', 
+   'Place a soft cloth over the surface of the sample then place foam sheet on it. Apply a load of 2.4 kg on the surface over the test sample with 4 pressure area 1 inch square in overnight. Use a room temperature of 35°C.',
+   NULL, 
+   NULL, 
+   now(), 
+   NULL, 
+   NULL, 
+   true, 
+   'Photo');
+
+

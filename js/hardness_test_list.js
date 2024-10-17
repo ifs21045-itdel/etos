@@ -88,31 +88,30 @@ function hardness_test_list_edit() {
             resizable: true,
             top: 60,
             buttons: [{
-                    text: 'Save',
-                    iconCls: 'icon-save',
-                    handler: function () {
-                        hardness_test_list_save(row.image);
-                    }
-                }, {
-                    text: 'Close',
-                    iconCls: 'icon-remove',
-                    handler: function () {
-                        $('#hardness_test_list_detail_dialog').dialog('close');
-                    }
-                }],
+                text: 'Save',
+                iconCls: 'icon-save',
+                handler: function () {
+                    hardness_test_list_save(row.image);
+                }
+            }, {
+                text: 'Close',
+                iconCls: 'icon-remove',
+                handler: function () {
+                    $('#hardness_test_list_detail_dialog').dialog('close');
+                }
+            }],
             onLoad: function () {
-                $('#hardness_test_list_detail_tr_component').remove();
-                $('#hardness_test_list_input_form').form('load', row);
-                var poDetails =  row.purchaseorder_item_id + '#' + row.po_client_no 
-                                + '#' + row.ebako_code + '#' + row.customer_code 
-                                + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id;
-                        
-                $('#hardness_test_list_po_item_id').combogrid('setValue', poDetails);
-
-                var vendorDetails =  row.vendor_id +"#" + row.vendor_name;
-                                
-                        
-                $('#hardness_test_vendor_id').combogrid('setValue', vendorDetails);
+                $('#hardness_test_protocol_id').combobox('setValue', row.protocol_test_id);  
+                $('#hardness_test_list_po_item_id').combogrid('setValue', row.purchaseorder_item_id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id); 
+                $('#hardness_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name);  
+                $('#hardness_test_date').datebox('setValue', row.test_date);  
+                $('#hardness_test_report_date').datebox('setValue', row.report_date);  
+                $('#hardness_test_report_no').val(row.report_no);  
+                $('#hardness_test_product_dimension').val(row.product_dimension);  
+                $('#hardness_test_carton_dimension').val(row.carton_dimension);  
+                $('#hardness_test_gross_weight').numberbox('setValue', row.gross_weight);  
+                $('#hardness_test_nett_weight').numberbox('setValue', row.nett_weight);  
+                $('#hardness_test_notes').val(row.notes);  
                 $(this).dialog('center');
             }
         });

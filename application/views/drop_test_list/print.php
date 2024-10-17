@@ -15,7 +15,7 @@
         }
 
         th {
-            background-color: #f2f2f2;
+            background-color: #d0f0c0; /* Warna hijau */
             font-weight: bold;
         }
 
@@ -24,7 +24,6 @@
             width: 180px;
             height: 240px;
             object-fit: cover;
-          
             padding: 5px; /* Spasi di dalam kotak gambar */
         }
 
@@ -34,7 +33,7 @@
                 width: 100%;
             }
             th {
-                background-color: #f2f2f2;
+                background-color: #d0f0c0;
                 color: black;
             }
         }
@@ -72,7 +71,7 @@
                     ?>
                 </td>
                 <td colspan="5" width="33%" style="height: 150px; vertical-align: middle; text-align: center;">
-                    <h3 style="margin: 0; font-size: 24px;">IN-HOUSE TEST REPORT</h3>
+                    <h3 style="margin: 0; font-size: 24px;">TEST REPORT</h3>
                 </td>
                 <td align='center' width="34%" style="height: 150px; vertical-align: middle; text-align: center;">
                     <h3 style="margin: 0; font-size: 24px;">Quality Assurance Department</h3>
@@ -85,19 +84,9 @@
             <tr class="no-border">
                 <td colspan="7" style="height: 50px;"></td> <!-- Spasi -->
             </tr>
+
             <!-- Bagian Kiri (Laporan dan Data Produk) -->
             <tr>
-                <td colspan="3" width="48%">
-                    <table class="table-border-luar">
-                        <tr><th colspan="4" style="text-align: center;">PRODUCT</th></tr>
-                        <tr><td>Customer</td><td>:</td><td colspan="2"><?php echo $drop_test_list->client_name; ?></td></tr>
-                        <tr><td>Ebako Code</td><td>:</td><td colspan="2"><?php echo $drop_test_list->ebako_code; ?></td></tr>
-                        <tr><td>Customer Code</td><td>:</td><td colspan="2"><?php echo $drop_test_list->customer_code; ?></td></tr>
-                        <tr><td>Item Description</td><td>:</td><td colspan="2"><?php echo $drop_test_list->item_description; ?></td></tr>
-                    </table>
-                </td>
-                <td width="1%"></td>
-                <!-- Bagian Kanan (Spesifikasi Produk) -->
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
                         <tr><th colspan="3" style="text-align: center;">PRODUCT SPESIFICATION</th></tr>
@@ -105,6 +94,32 @@
                         <tr><td>Carton Dimension (Inches)</td><td>:</td><td><?php echo $drop_test_list->carton_dimension; ?></td></tr>
                         <tr><td>Gross Weight (Lbs)</td><td>:</td><td><?php echo $drop_test_list->gross_weight; ?></td></tr>
                         <tr><td>Nett Weight (Lbs)</td><td>:</td><td><?php echo $drop_test_list->nett_weight; ?></td></tr>
+                    </table>
+                </td>
+                <td width="1%" colspan ="3"></td>
+
+                <!-- Bagian Kanan (Spesifikasi Produk) -->
+                <td width="48%">
+                    <table class="table-border-luar">
+                        <tr><th colspan="2" style="text-align: center;">RESULT</th></tr>
+                        <tr>
+                            <td>PASS</td>
+                            <td width='70%' align='center'>
+                                <?php if ($drop_test_list->rating == 'Passed') echo '<b>X</b>'; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>FAIL</td>
+                            <td width='70%' align='center'>
+                                <?php if ($drop_test_list->rating == 'Failed') echo '<b>X</b>'; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CAR</td>
+                            <td width='70%' align='center'>
+                                <?php if ($drop_test_list->rating == 'Car') echo '<b>X</b>'; ?>
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
@@ -118,30 +133,57 @@
             <tr>
                 <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                        <tr><th colspan="4" style="text-align: center;">Sample Picture</th></tr>
+                        <tr><th colspan="6" style="text-align: center;">Sample Picture</th></tr>
                         <tr style="height: 384px;">
-                            <td align="center" style="vertical-align: middle;" colspan="4">
-                                <?php if (trim($drop_test_list->product_image) != "") {
+                            <td align="center" style="vertical-align: middle;" colspan="6">
+                                <?php
+                                if (trim($drop_test_list->product_image) != "") {
                                     $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $drop_test_list->id . "/" . $drop_test_list->product_image;
-                                    $width = 3 * 60;  
-                                    $height = 4 * 60; 
-                                    echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
-                                } ?>
+                                    echo "<img src='" . $image . "' class='sample-image' />";
+                                }
+                                ?>
                             </td>
                         </tr>
                     </table>
                 </td>
-                <td width="1%"></td>
-                <td colspan="3" width="60%">
+                <td width="1%" colspan></td>
+                <td colspan="3" width="48%">
                     <table class="table-border-luar">
-                        <tr><th colspan="3" style="text-align: center;">Corrective Action Item</th></tr>
-                        <tr style="height: 384px;"></tr>
+                        <tr><th colspan="6" style="text-align: center;">Corrective Action Item</th></tr>
+                        <tr style="height: 384px;">
+                            <td align="center" style="vertical-align: middle;" colspan="6">
+                                <?php
+                                if (trim($drop_test_list->corrective_action_plan_image) != "") {
+                                    $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $drop_test_list->id . "/" . $drop_test_list->corrective_action_plan_image;
+                                    echo "<img src='" . $image . "' class='sample-image' />";
+                                }
+                                ?>
+                            </td>
+                        </tr>
                     </table>
                 </td>
             </tr>
 
+            <!-- Baris Kosong untuk Spasi -->
+            <tr class="no-border">
+                <td colspan="7" style="height: 50px;"></td>
+            </tr>
+
             <!-- Summary -->
-            <tr><th bgcolor='#ffff99' colspan="7" align="center">TEST RESULT SUMMARY</th></tr>
+            <tr>
+                <th colspan="7" style="text-align: center;">PRODUCT</th>
+            </tr>
+            <tr><td>Customer</td><td style="width: 1%; white-space: nowrap;">:</td><td colspan="6"><?php echo $drop_test_list->client_name; ?></td></tr>
+            <tr><td>Ebako Code</td><td style="width: 1%; white-space: nowrap;">:</td><td colspan="6"><?php echo $drop_test_list->ebako_code; ?></td></tr>
+            <tr><td>Customer Code</td><td style="width: 1%; white-space: nowrap;">:</td><td colspan="6"><?php echo $drop_test_list->customer_code; ?></td></tr>
+            <tr><td>Item Description</td><td style="width: 1%; white-space: nowrap;">:</td><td colspan="6"><?php echo $drop_test_list->item_description; ?></td></tr>
+
+            <!-- Baris Kosong untuk Spasi -->
+            <tr class="no-border">
+                <td colspan="7" style="height: 50px;"></td>
+            </tr>
+
+            <!-- Rincian Test -->
             <tr>
                 <td colspan="7">
                     <table class="table-border-luar-dalam">
@@ -155,38 +197,37 @@
                     </table>
                 </td>
             </tr>
-            <!-- Rincian Test Non-Deskripsi -->
+
+            <!-- Test Result Summary -->
             <tr>
-            <td colspan="7">
-                <table cellpadding="0" cellspacing="0" width="100%" class="table-border-luar-dalam">
-                    <?php
-                    foreach ($drop_test_list_detail as $result) {
-                        if ($result->var_type != 'Description') {
-                            ?>
-                            <tr style="height: 384px;">
-                                <td width="50%" style="border: 1px solid #000; padding: 8px;" colspan ="4">
-                                    <?php echo $result->method; ?>
-                                </td>
-                                <td width="50%" align="center" style="border: 1px solid #000; padding: 8px;" colspan="5">
-                                    <?php
-                                    if (trim($result->image_file) != "") {
-                                        $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $result->drop_test_list_id . "/" . $result->image_file;
-                                        $width = 3 * 60;  
-                                        $height = 4 * 60; 
-                                        echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
-                                        echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
-                                    }
-                                    ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    ?>
-                </table>
-            </td>
-        </tr>
-            
+                <th colspan="7" style="text-align: center;">TEST RESULT SUMMARY</th>
+            </tr>
+
+            <tr>
+                <td colspan="7">
+                    <table class="table-border-luar-dalam">
+                        <?php foreach ($drop_test_list_detail as $result) {
+                            if ($result->var_type != 'Description') { ?>
+                                <tr style="height: 384px;">
+                                    <td width="30%" style="border: 1px solid #000; padding: 8px;">
+                                        <?php echo $result->method; ?>
+                                    </td>
+                                    <td width="70%" align="center" style="border: 1px solid #000; padding: 8px;">
+                                        <?php
+                                        if (trim($result->image_file) != "") {
+                                            $image = $_SERVER["HTTP_REFERER"] . 'files/droptest/' . $result->drop_test_list_id . "/" . $result->image_file;
+                                            $width = 180;  // Width gambar yang disesuaikan
+                                            $height = 240; // Height gambar yang disesuaikan
+                                            echo "<img src='" . $image . "' width='" . $width . "' height='" . $height . "' style='margin-top: 10px;' />";
+                                            echo "<br><span style='font-size: 12px;'>" . $result->method . "</span>"; // Label mengikuti ukuran gambar
+                                        }
+                                        ?>
+                                    </td>
+                                </tr>
+                        <?php } } ?>
+                    </table>
+                </td>
+            </tr>
         </tbody>
     </table>
 </body>
