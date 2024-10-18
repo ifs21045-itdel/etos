@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
-            <th field="evaluation" halign="center" width="250" sortable="true">Component</th>
+            <th field="evaluation" halign="center" width="250" sortable="true">Method</th>
             <th field="result_test_var" halign="center" sortable="true">Result</th>
             <!-- <th field="method" halign="center" width="350" sortable="true">Method</th>
             <th field="result_test_var" halign="center" sortable="true">Result</th>
