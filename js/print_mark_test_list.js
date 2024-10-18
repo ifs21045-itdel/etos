@@ -101,17 +101,17 @@ function print_mark_test_list_edit() {
                 }
             }],
             onLoad: function () {
-                $('#print_mark_test_protocol_id').combobox('setValue', row.protocol_test_id);  
+                $('#product_test_protocol_id').combobox('setValue', row.protocol_test_id);  
                 $('#print_mark_test_list_po_item_id').combogrid('setValue', row.purchaseorder_item_id + '#' + row.po_client_no + '#' + row.ebako_code + '#' + row.customer_code + '#' + row.client_id + '#' + row.client_name + '#' + row.product_id); 
-                $('#print_mark_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name);  
-                $('#print_mark_test_date').datebox('setValue', row.test_date);  
-                $('#print_mark_test_report_date').datebox('setValue', row.report_date);  
-                $('#print_mark_test_report_no').val(row.report_no);  
-                $('#print_mark_test_product_dimension').val(row.product_dimension);  
-                $('#print_mark_test_carton_dimension').val(row.carton_dimension);  
-                $('#print_mark_test_gross_weight').numberbox('setValue', row.gross_weight);  
-                $('#print_mark_test_nett_weight').numberbox('setValue', row.nett_weight);  
-                $('#print_mark_test_notes').val(row.notes);  
+                $('#product_test_vendor_id').combogrid('setValue', row.vendor_id + "#" + row.vendor_name);  
+                $('#product_test_date').datebox('setValue', row.test_date);  
+                $('#product_test_report_date').datebox('setValue', row.report_date);  
+                $('#product_test_report_no').val(row.report_no);  
+                $('#product_test_product_dimension').val(row.product_dimension);  
+                $('#product_test_carton_dimension').val(row.carton_dimension);  
+                $('#product_test_gross_weight').numberbox('setValue', row.gross_weight);  
+                $('#product_test_nett_weight').numberbox('setValue', row.nett_weight);  
+                $('#product_test_notes').val(row.notes);  
                 $(this).dialog('center');
             }
         });
@@ -471,7 +471,7 @@ function print_mark_test_list_submit(result_status) {
     var row_print_mark_test_list_detail = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getRows');
     //alert(arr.length); 
     if ((row !== null) && (row_print_mark_test_list_detail.length>0)){
-        $.messager.confirm('Submit Submited', 'After submited you can not change the hardnesstest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
+        $.messager.confirm('Submit Submited', 'After submited you can not change the producttest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
             if (r) {
                 $.post(base_url + 'print_mark_test_list/submit', {id: row.id,result_s:result_status}, function (result) {
                     if (result.success) {
@@ -487,7 +487,7 @@ function print_mark_test_list_submit(result_status) {
             }
         });
     } else {
-        $.messager.alert('Submitted hardness Test  Warning', 'No hardness Test or no item to be submitted', 'warning');
+        $.messager.alert('Submitted Product Test  Warning', 'No Product Test or no item to be submitted', 'warning');
     }
 }
 function print_print_mark_test_list(type,view_type) {
@@ -528,4 +528,3 @@ function print_mark_test_list_variabel_test_view_detail(id) {
         }
     });
 }
-
