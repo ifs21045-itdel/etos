@@ -7,12 +7,12 @@
                     <textarea name="evaluation" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td width="35%"><strong>Method</strong></td>
                 <td width="75%">
                     <textarea name="method" class="easyui-validatebox" style="width: 98%;height: 35px"></textarea>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td><strong>Data Type</strong></td>
                 <td>
