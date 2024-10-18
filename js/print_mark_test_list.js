@@ -471,7 +471,7 @@ function print_mark_test_list_submit(result_status) {
     var row_print_mark_test_list_detail = $('#print_mark_test_list_print_mark_test_list_detail').datagrid('getRows');
     //alert(arr.length); 
     if ((row !== null) && (row_print_mark_test_list_detail.length>0)){
-        $.messager.confirm('Submit Submited', 'After submited you can not change the hardnesstest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
+        $.messager.confirm('Submit Submited', 'After submited you can not change the producttest item anymore<br/><br/><center>Are you sure?</center>', function (r) {
             if (r) {
                 $.post(base_url + 'print_mark_test_list/submit', {id: row.id,result_s:result_status}, function (result) {
                     if (result.success) {
@@ -487,7 +487,7 @@ function print_mark_test_list_submit(result_status) {
             }
         });
     } else {
-        $.messager.alert('Submitted hardness Test  Warning', 'No hardness Test or no item to be submitted', 'warning');
+        $.messager.alert('Submitted Product Test  Warning', 'No Product Test or no item to be submitted', 'warning');
     }
 }
 function print_print_mark_test_list(type,view_type) {

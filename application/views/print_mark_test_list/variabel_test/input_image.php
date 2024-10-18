@@ -1,5 +1,5 @@
 <div style="width: 99%;padding: 2px;">
-    <form id="print_mark_test_list_test_list_detail_input_image" method="post" novalidate enctype="multipart/form-data">
+    <form id="print_mark_test_list_print_mark_test_list_detail_input_image" method="post" novalidate enctype="multipart/form-data">
         <table width="100%" border="0" class="table_form">
             <?php
             //echo $type_form;
@@ -18,14 +18,6 @@
                 <tr>
                     <td width="25%"><strong>Photo 1</strong></td>
                     <td width="75%"><input type="file" name="image_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
-                </tr>
-                <tr>
-                    <td width="25%"><strong>Photo 2</strong></td>
-                    <td width="75%"><input type="file" name="image2_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
-                </tr>
-                <tr>
-                    <td width="25%"><strong>Photo 3</strong></td>
-                    <td width="75%"><input type="file" name="image3_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
                 </tr>
     <!--                            <tr>
     <td width="25%"><strong>Photo 2</strong></td>

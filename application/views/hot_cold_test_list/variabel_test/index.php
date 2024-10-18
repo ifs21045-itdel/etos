@@ -98,19 +98,7 @@
         }
         return temp;
     }
-    function showimage_hotcold_test3(value, row) {
-        var idrow = row.id;
-        var temp = '';
-        //alert(row.hot_cold_test_list_id);
-        if (row.image3_file == null)
-            var temp = '';
-        else {
-            //var temp=row.image_file;
-            var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image3_file + "' width=90 height=90 onclick='hot_cold_test_list_variabel_test_view_detail(" + idrow + ")'>";
-            //var temp = "<img src='files/hotcoldtest/" + row.hot_cold_test_list_id + "/" + row.image_file + "' width=50>" + row.image_file;
-        }
-        return temp;
-    }
+    
     function formatDetail2_dt(value, row) {
         var idrow = row.id;
         //var temp = '';

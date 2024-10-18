@@ -51,14 +51,6 @@
                                 <td width="25%"><strong>Photo 1</strong></td>
                                 <td width="75%"><input type="file" name="image_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
                             </tr>
-                            <tr>
-                                <td width="25%"><strong>Photo 3</strong></td>
-                                <td width="75%"><input type="file" name="image2_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
-                            </tr>
-                            <tr>
-                                <td width="25%"><strong>Photo 4</strong></td>
-                                <td width="75%"><input type="file" name="image3_file" data-options="prompt:'Pilih File...'" style="width:90%"> </td>
-                            </tr>
 <!--                            <tr>
                                 <td width="25%"><strong>Photo 2</strong></td>
                                 <td width="75%"><input type="file" name="image_file2" data-options="prompt:'Pilih File...'" style="width:90%"> </td>

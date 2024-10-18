@@ -239,10 +239,10 @@ class hot_cold_test_list extends CI_Controller{
             if (isset($_FILES[$nametemp2]['name'])) {
                 $imageName2 = $_FILES[$nametemp2]['name'];
                 $tempPath2 = $_FILES[$nametemp2]["tmp_name"];
-                $imageType2 = pathinfo($imageName2, PATHINFO_EXTENSION);
-                $basename2 = 'pt-' . $id . '-vt-' . $hot_cold_test_list_id . '-image-2.' . $imageType; // 5dab1961e93a7_1571494241.jpg
+                $imageType2 = pathinfo($imageName2, PATHINFO_EXTENSION);  // Ambil tipe file dari gambar kedua
+                $basename2 = 'pt-' . $id . '-vt-' . $hot_cold_test_list_id . '-image-2.' . $imageType2; // Gunakan $imageType2, bukan $imageType
                 $originalPath2 = $directory . '/' . $basename2;
-
+            
                 if (in_array($imageType2, $allowedImageType)) {
                     if (file_exists($originalPath2)) {
                         // Hapus file lama
@@ -252,7 +252,7 @@ class hot_cold_test_list extends CI_Controller{
                     if (move_uploaded_file($tempPath2, $originalPath2)) {
                         $data_box['image2_file'] = $basename2;
                     } else {
-                        echo 'image 1 Not uploaded ! try again';
+                        echo 'image 2 Not uploaded ! try again';
                         exit();
                     }
                 }
