@@ -267,8 +267,11 @@
                         } else {
                             ?>
                             <tr>
-                                <td  width="50%">
+                                <td  width="40%">
                                     <?php echo $result->method; ?>
+                                </td>
+                                <td  width="10%">
+                                    <?php echo $result->result_test_var; ?>
                                 </td>
                                 <td align="center"  width="50%">
                                     <?php

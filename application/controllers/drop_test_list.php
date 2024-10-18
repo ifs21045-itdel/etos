@@ -336,47 +336,66 @@ class drop_test_list extends CI_Controller {
             'result_test_var' => $this->input->post('result_test_var'),
             'notes' => $this->input->post('notes')
         );
+        
         $nametemp = 'image_file';
-        if (isset($_FILES[$nametemp]['name'])) {
+        
+        // Jika ada file gambar yang diupload
+        if (isset($_FILES[$nametemp]['name']) && !empty($_FILES[$nametemp]['name'])) {
             $directory = 'files/droptest/' . $drop_test_list_id;
-
+    
+            // Cek apakah folder ada, jika tidak buat folder
             if (!file_exists($directory)) {
                 $oldumask = umask(0);
-                mkdir($directory, 0777); // or even 01777 so you get the sticky bit set
+                mkdir($directory, 0777);
                 umask($oldumask);
             }
+    
             $allowedImageType = array('jpg', 'png', 'jpeg', 'JPG', 'JPEG', 'PNG');
             $uploadTo = $directory;
             $imageName = $_FILES[$nametemp]['name'];
             $tempPath = $_FILES[$nametemp]["tmp_name"];
-            //$basename = basename($imageName);
-
-            $imageType = pathinfo($imageName, PATHINFO_EXTENSION);
-
-            $basename = 'dt-' . $id . '-vt-' . $drop_test_list_id . '-image-1.' . $imageType; // 5dab1961e93a7_1571494241.jpg
-            $originalPath = $directory . '/' . $basename;
-            if (in_array($imageType, $allowedImageType)) {
-                // Upload file to server 
-                if (file_exists($originalPath)) {
-                    // Hapus file lama
-                    unlink($originalPath);
-                }
-                if (move_uploaded_file($tempPath, $originalPath)) {
-                    $data_box['image_file'] = $basename;
-                    $data_box['updated_by'] = $this->session->userdata('id');
-                    $data_box['updated_at'] = date("Y-m-d H:i:s");
-                    if ($this->model_drop_test_list->drop_test_list_detail_update($data_box, array("id" => $id))) {
-                        echo json_encode(array('success' => true));
+            $imageType = pathinfo($imageName, PATHINFO_EXTENSION); // Ambil ekstensi file
+    
+            // Pengecekan tambahan untuk memastikan ekstensi file tidak kosong
+            if (!empty($imageType)) {
+                // Nama file baru dengan format yang jelas
+                $basename = 'dt-' . $id . '-vt-' . $drop_test_list_id . '-image-1.' . $imageType; 
+                $originalPath = $directory . '/' . $basename;
+                
+                // Cek apakah tipe file sesuai dengan yang diperbolehkan
+                if (in_array($imageType, $allowedImageType)) {
+                    // Jika file sudah ada, hapus yang lama
+                    if (file_exists($originalPath)) {
+                        unlink($originalPath);
+                    }
+    
+                    // Upload file baru ke server
+                    if (move_uploaded_file($tempPath, $originalPath)) {
+                        $data_box['image_file'] = $basename; // Simpan nama file di database
+                        $data_box['updated_by'] = $this->session->userdata('id');
+                        $data_box['updated_at'] = date("Y-m-d H:i:s");
+                        
+                        // Update data ke database
+                        if ($this->model_drop_test_list->drop_test_list_detail_update($data_box, array("id" => $id))) {
+                            echo json_encode(array('success' => true));
+                        } else {
+                            echo json_encode(array('msg' => $this->db->_error_message()));
+                        }
                     } else {
-                        echo json_encode(array('msg' => $this->db->_error_message()));
+                        echo 'Image not uploaded! Try again.';
                     }
                 } else {
-                    echo 'image Not uploaded ! try again';
+                    echo 'Invalid image file type.';
                 }
+            } else {
+                echo "Error: File extension is missing.";
             }
         } else {
+            // Jika tidak ada file yang diupload, hanya update data selain file gambar
             $data_box['updated_by'] = $this->session->userdata('id');
             $data_box['updated_at'] = date("Y-m-d H:i:s");
+    
+            // Update data ke database
             if ($this->model_drop_test_list->drop_test_list_detail_update($data_box, array("id" => $id))) {
                 echo json_encode(array('success' => true));
             } else {
@@ -384,6 +403,7 @@ class drop_test_list extends CI_Controller {
             }
         }
     }
+    
 
     function prints() {
         $jenis_laporan = $this->input->post('jenis_laporan');
