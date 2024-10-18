@@ -67,7 +67,6 @@
                toolbar:'#drop_test_list_toolbar'">
             <thead>
                 <tr>
-                corrective_action_plan_image
                     <th field="protocol_name" halign="center">Drop Test Type</th>
                     <!-- <th field="brand" halign="center">Brand</th> -->
                     <th field="po_client_no"  halign="center">Po Number</th>

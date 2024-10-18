@@ -51,7 +51,7 @@
                 echo "<img src='" . $image . "' width='100'>";
                 ?>
             </td>
-            <td colspan="5" align="center"  width="33%"><h3>IN-HOUSE TEST REPORT</h3></td>
+            <td colspan="5" align="center"  width="33%"><h3>TEST REPORT</h3></td>
             <td  align='center' width="34%"><b>Quality Assurance Department</b></td>
         </tr>
     </thead>

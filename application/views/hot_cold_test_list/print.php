@@ -57,7 +57,7 @@
                 echo "<img src='" . $image . "' width='100'>";
                 ?>
             </td>
-            <td colspan="5" align="center"  width="33%"><h3>IN-HOUSE TEST REPORT</h3></td>
+            <td colspan="5" align="center"  width="33%"><h3>TEST REPORT</h3></td>
             <td  align='center' width="34%"><b>Quality Assurance Department</b></td>
         </tr>
     </thead>
@@ -92,7 +92,7 @@
             <td colspan="3" width="48%">
                 <table  class="table-border-luar-dalam">
                     <tr>
-                        <th colspan="3">RESULT</th>
+                        <th bgcolor='#ffff99' colspan="3">RESULT</th>
                     </tr>
                     <tr>
                         <td width='50%'>PASS</td>
@@ -133,7 +133,7 @@
             <td colspan="3" width="48%">
                 <table  class="table-border-luar-dalam"  width='100%'>
                     <tr>
-                        <th colspan="3">Sample Test Picture</th>
+                        <th bgcolor='#ffff99' colspan="3">Sample Test Picture</th>
                     </tr>
                     <tr>
                         <td height="100" width="500" align="center">
@@ -154,7 +154,7 @@
             <td colspan="3" width="48%">
                 <table  class="table-border-luar-dalam" width='100%'>
                     <tr>
-                        <th colspan="3">Corrective Action Item</th>
+                        <th bgcolor='#ffff99' colspan="3">Corrective Action Item</th>
                     </tr>
                     <tr>
                         
@@ -207,7 +207,7 @@
             <td colspan="7" width="48%">
                 <table  class="table-border-luar-dalam">
                     <tr>
-                        <th colspan="3" align="left">PRODUCT</th>
+                        <th bgcolor='#ffff99' colspan="3" align="left">PRODUCT</th>
                     </tr>
                     <tr>
                         <td width='40%'>Customer</td>
@@ -236,7 +236,7 @@
             <td colspan="7" width="100%">
                 <table class="table-border-luar-dalam" width="100%">
                     <tr>
-                        <th colspan="3" align="left">Testing Conditions (1 Cycle) = Total 10 Cycles</th>
+                        <th bgcolor='#ffff99' colspan="3" align="left">Testing Conditions (1 Cycle) = Total 10 Cycles</th>
                     </tr>
                     <tr>
                         <td width='33%' align="left"><b>Condition A</b></td>
@@ -265,7 +265,7 @@
          <tr>
             <td colspan="7" width="100%">
                 <table class="table-border-luar-dalam" width="100%">
-                <tr><th colspan="11">Testing Progress</th></tr>
+                <tr><th bgcolor='#ffff99' colspan="11">Testing Progress</th></tr>
                         <tr>
                             <td>Cycle</td>
                             <?php for ($i = 1; $i <= 10; $i++) { echo "<td>$i</td>"; } ?>
