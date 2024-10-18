@@ -212,9 +212,9 @@
                         <td width='58%'><?php echo $hardness_test_list->customer_code; ?></td>
                     </tr>
                     <tr>
-                        <td width='40%'>Item Description</td>
+                        <td width='40%'>Vendor</td>
                         <td width='2%' align='center'>:</td>
-                        <td width='58%'><?php echo $hardness_test_list->item_description; ?></td>
+                        <td width='58%'><?php echo $hardness_test_list->vendor_name; ?></td>
                     </tr>
                 </table>
             </td>
