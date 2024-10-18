@@ -41,7 +41,7 @@
     <thead>
         <tr>
             <th data-options="field:'ck',checkbox:true"></th>
-            <th field="evaluation" halign="center" width="250" sortable="true">Componen</th>
+            <th field="evaluation" halign="center" width="250" sortable="true">Pencil Hardness</th>
             <th field="result_test_var" halign="center" sortable="true">Result</th>
             <!-- <th field="notes" halign="center" width=250 sortable="true">Notes</th> -->
             <th field="var_type" halign="center" sortable="true">Data Type</th>

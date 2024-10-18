@@ -68,7 +68,7 @@
             <thead>
                 <tr>
                 corrective_action_plan_image
-                    <th field="protocol_name" halign="center">Product Test Type</th>
+                    <th field="protocol_name" halign="center">Drop Test Type</th>
                     <!-- <th field="brand" halign="center">Brand</th> -->
                     <th field="po_client_no"  halign="center">Po Number</th>
                     <th field="vendor_name"  halign="center">Vendor</th>
