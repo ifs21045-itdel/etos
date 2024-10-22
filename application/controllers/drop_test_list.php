@@ -434,6 +434,21 @@ class drop_test_list extends CI_Controller {
         $this->load->view('drop_test_list/print', $data);
     }
 
+    function excel() {
+        $this->load->model('model_drop_test_list_excel');
+        
+        $id = $this->input->post('id'); 
+        
+        $data['drop_test_list'] = $this->model_drop_test_list->select_by_id($id); 
+        $data['drop_test_list_detail'] = $this->model_drop_test_list->drop_test_list_detail_select_by_drop_test_list_detail_id($id);
+      
+        $this->load->model('model_drop_test_list_excel'); 
+        $this->model_drop_test_list_excel->initialize($data['drop_test_list'], $data['drop_test_list_detail']);
+       
+        $this->model_drop_test_list_excel->download(); 
+    }
+    
+
     function print_summary() {
         $id = $this->input->post('id');
         $this->load->library('pdf');
