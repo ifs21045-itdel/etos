@@ -237,7 +237,7 @@ class product_test_list extends CI_Controller {
                 $imageName2 = $_FILES[$nametemp2]['name'];
                 $tempPath2 = $_FILES[$nametemp2]["tmp_name"];
                 $imageType2 = pathinfo($imageName2, PATHINFO_EXTENSION);
-                $basename2 = 'pt-' . $id . '-vt-' . $product_test_list_id . '-image-2.' . $imageType; // 5dab1961e93a7_1571494241.jpg
+                $basename2 = 'pt-' . $id . '-vt-' . $product_test_list_id . '-image-2.' . $imageType2; // 5dab1961e93a7_1571494241.jpg
                 $originalPath2 = $directory . '/' . $basename2;
 
                 if (in_array($imageType2, $allowedImageType)) {
@@ -258,9 +258,9 @@ class product_test_list extends CI_Controller {
                 $imageName3 = $_FILES[$nametemp3]['name'];
                 $tempPath3 = $_FILES[$nametemp3]["tmp_name"];
                 $imageType3 = pathinfo($imageName3, PATHINFO_EXTENSION);
-                $basename3 = 'pt-' . $id . '-vt-' . $product_test_list_id . '-image-3.' . $imageType; // 5dab1961e93a7_1571494241.jpg
+                $basename3 = 'pt-' . $id . '-vt-' . $product_test_list_id . '-image-3.' . $imageType3; // 5dab1961e93a7_1571494241.jpg
                 $originalPath3 = $directory . '/' . $basename3;
-
+            
                 if (in_array($imageType3, $allowedImageType)) {
                     if (file_exists($originalPath3)) {
                         // Hapus file lama
@@ -268,13 +268,14 @@ class product_test_list extends CI_Controller {
                     }
                     // Upload file to server 
                     if (move_uploaded_file($tempPath3, $originalPath3)) {
-                        $data_box['image2_file'] = $basename3;
+                        $data_box['image3_file'] = $basename3; // Pastikan menyimpan ke kolom image3_file
                     } else {
-                        echo 'image 1 Not uploaded ! try again';
+                        echo 'image 3 Not uploaded ! try again';
                         exit();
                     }
                 }
             }
+            
         }
         if ($id == 0) {
             $data_box['created_by'] = $this->session->userdata('id');
@@ -452,6 +453,20 @@ class product_test_list extends CI_Controller {
             header("Expires: 0");
         }
         $this->load->view('product_test_list/print', $data);
+    }
+
+    function excel() {
+        $this->load->model('model_product_test_list_excel');
+        
+        $id = $this->input->post('id'); 
+        
+        $data['product_test_list'] = $this->model_product_test_list->select_by_id($id); 
+        $data['product_test_list_detail'] = $this->model_product_test_list->product_test_list_detail_select_by_product_test_list_detail_id($id);
+      
+        $this->load->model('model_product_test_list_excel'); 
+        $this->model_product_test_list_excel->initialize($data['product_test_list'], $data['product_test_list_detail']);
+       
+        $this->model_product_test_list_excel->download(); 
     }
 
     function print_summary() {

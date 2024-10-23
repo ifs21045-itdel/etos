@@ -265,22 +265,24 @@
                     <?php
                     $x = 0;
                     foreach ($product_test_list_detail as $result) {
-                        if ($result->var_type == 'Description') {
-                            continue;
-                        } else {
-                            ?>
-                            <tr>
-                                <td  width="30%">
-                                    <?php echo $result->evaluation; ?>
-                                </td>
-                                <td  width="30%">
-                                    <?php echo $result->method; ?>
-                                </td>
-                                <td  width="10%">
-                                    <?php echo $result->result_test_var; ?>
-                                </td>
-                                <td align="center"  width="50%">
-                                    <?php
+                        ?>
+                        <tr>
+                            <td width="30%">
+                                <?php echo $result->evaluation; ?>
+                            </td>
+                            <td width="30%">
+                                <?php echo $result->method; ?>
+                            </td>
+                            <td width="10%">
+                                <?php echo $result->result_test_var; ?>
+                            </td>
+                            <td align="center" width="50%">
+                                <?php
+                                // Jika var_type adalah 'Description', tampilkan teks "Note"
+                                if ($result->var_type == 'Description') {
+                                    echo $result->notes;
+                                } else {
+                                    // Jika ada gambar, tampilkan gambar
                                     if (trim($result->image_file) != "") {
                                         $image = $_SERVER["HTTP_REFERER"] . 'files/producttest/' . $result->product_test_list_id . "/" . $result->image_file;
                                         echo "<img src='" . $image . "' width='175'>";
@@ -289,16 +291,15 @@
                                         $image2 = $_SERVER["HTTP_REFERER"] . 'files/producttest/' . $result->product_test_list_id . "/" . $result->image2_file;
                                         echo "<img src='" . $image2 . "' width='175'>";
                                     }
-                                    if (trim($result->image_file) != "") {
+                                    if (trim($result->image3_file) != "") {
                                         $image3 = $_SERVER["HTTP_REFERER"] . 'files/producttest/' . $result->product_test_list_id . "/" . $result->image3_file;
                                         echo "<img src='" . $image3 . "' width='175'>";
                                     }
-                                    ?>
-                                </td>
-                            </tr>
-                            <?php
-                        }
-
+                                }
+                                ?>
+                            </td>
+                        </tr>
+                        <?php
                         $x++;
                     }
                     ?>

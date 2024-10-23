@@ -41,7 +41,7 @@
                 <a href="#" id="hot_cold_test_list_print_id" class="easyui-menubutton" data-options="menu:'#hot_cold_test_list_mm_print',iconCls:'icon-print'">Print</a>
                 <div id="hot_cold_test_list_mm_print" style="width:150px;">
                     <div data-options="iconCls:'icon-view'"  onclick="print_hot_cold_test_list('single', 'view')">View</div>
-                    <div data-options="iconCls:'icon-xls'"  onclick="print_hot_cold_test_list('all', 'excel')">Excel</div>
+                    <div data-options="iconCls:'icon-xls'"  onclick="hot_cold_test_list_excel()">Excel</div>
                 </div>
             </form>
         </div>

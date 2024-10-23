@@ -549,3 +549,14 @@ function hot_cold_test_list_variabel_test_view_detail(id) {
     });
 }
 
+function hot_cold_test_list_excel() {
+    console.log("Excel button clicked");
+    var row = $('#hot_cold_test_list').datagrid('getSelected');
+    if (row !== null) {
+        open_target('post', base_url + 'hot_cold_test_list/excel', {
+            id: row.id
+        }, 'box_iframe');
+    } else {
+        $.messager.alert('No Inspection List Selected', 'Please Select Inspection List', 'warning');
+    }
+}
