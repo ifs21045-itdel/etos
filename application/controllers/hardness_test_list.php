@@ -325,6 +325,19 @@ class hardness_test_list extends CI_Controller{
         }
     }
 
+    function excel() {
+        $this->load->model('model_hardness_test_list_excel');
+        
+        $id = $this->input->post('id'); 
+        
+        $data['hardness_test_list'] = $this->model_hardness_test_list->select_by_id($id); 
+        $data['hardness_test_list_detail'] = $this->model_hardness_test_list->hardness_test_list_detail_select_by_hardness_test_list_detail_id($id);
+      
+        $this->load->model('model_hardness_test_list_excel'); 
+        $this->model_hardness_test_list_excel->initialize($data['hardness_test_list'], $data['hardness_test_list_detail']);
+       
+        $this->model_hardness_test_list_excel->download(); 
+    }
     function hardness_test_list_detail_delete() {
         $id = $this->input->post('id');
         if ($this->model_hardness_test_list->hardness_test_list_detail_delete(array("id" => $id))) {

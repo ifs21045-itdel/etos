@@ -41,7 +41,7 @@
                 <a href="#" id="print_mark_test_list_print_id" class="easyui-menubutton" data-options="menu:'#print_mark_test_list_mm_print',iconCls:'icon-print'">Print</a>
                 <div id="print_mark_test_list_mm_print" style="width:150px;">
                     <div data-options="iconCls:'icon-view'"  onclick="print_print_mark_test_list('single', 'view')">View</div>
-                    <div data-options="iconCls:'icon-xls'"  onclick="print_print_mark_test_list('all', 'excel')">Excel</div>
+                    <div data-options="iconCls:'icon-xls'"  onclick="print_mark_test_list_excel()">Excel</div>
                 </div>
             </form>
         </div>
